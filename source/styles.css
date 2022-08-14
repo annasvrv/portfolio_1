@@ -1,14 +1,14 @@
 :root {
-  --branding-color: #eeeedf;
+  --branding-color: rgb(238, 238, 223);
   --content-color: #393944;
-  --secondary-color: #a94e41;
+  --secondary-color: rgb(169, 79, 65);
+  --button-color: rgb(133, 144, 108);
   --heading-font-family: "Playfair Display", serif;
   --default-font-family: "Poppins", sans-serif;
 }
 
 body {
   font-family: var(--default-font-family);
-  text-align: center;
   background-color: var(--secondary-color);
   color: var(--content-color);
 }
@@ -16,7 +16,7 @@ body {
 .container {
   margin: 0px auto;
   padding: 0;
-  /* background: white; */
+  background: white;
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
 }
 
@@ -24,26 +24,88 @@ body {
   margin: 0;
   padding: 250px 0;
   background: var(--branding-color);
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading-font-family);
 }
 
 h1 {
-  font-family: var(--heading-font-family);
   font-size: 72px;
 }
-h2 {
+
+p {
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.hero h2 {
   font-size: 24px;
 }
 
-.contact-btn {
-  margin-top: 70px;
+.hero p {
+  font-size: 18px;
 }
 
 .btn-branding {
   padding: 15px 30px;
-  /* background: var(--secondary-color); */
-  background: #85906c;
+  background: var(--button-color);
   border-radius: 10px;
   color: var(--branding-color);
   font-size: 18px;
-  text-decoration: none;
+}
+
+.btn-branding-outline {
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: var(--content-color);
+  border: 1px solid var(--content-color);
+}
+
+.main-section img {
+  border: 10px solid white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+.content-section {
+  padding: 100px;
+}
+
+.content-section-reverse p {
+  margin-right: 60px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 150px 0;
+  }
+
+  h1 {
+    font-size: 56px;
+  }
+
+  p {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  .main-section {
+    text-align: center;
+  }
+
+  .content-section {
+    padding: 0;
+  }
+
+  .content-section-reverse p {
+    margin-right: 0px;
+  }
 }
