@@ -6,6 +6,7 @@
   --secondary-color: #d25235;
 
   --heading-font-family: "Playfair Display", serif;
+  --brand-font-family: "Aboreto", cursive;
   --default-font-family: "Poppins", sans-serif;
 }
 
@@ -51,6 +52,7 @@ h1,
 h2,
 h3,
 h4 {
+  /* font-family: var(--brand-font-family); */
   font-family: var(--heading-font-family);
   color: var(--heading-color);
 }
@@ -132,9 +134,54 @@ p {
   /* background-color: var(--content-color); */
 }
 
+/* About Page */
+
+.about-section {
+  margin: 20px;
+}
+
+.about-hero {
+  margin: 70px;
+  padding-top: 80px;
+}
+
+.about-section h1 {
+  font-size: 48px;
+}
+
+.about-section h2 {
+  font-size: 34px;
+}
+
+.about-section h3 {
+  color: var(--content-color);
+  font-size: 26px;
+}
+
+.about-photo {
+  max-width: 300px;
+  border-radius: 100%;
+  box-shadow: 100px 0px 200px #fdbb2d86, -100px 0px 200px #22c0c3a0,
+    -10px 40px 80px #d2523595;
+}
+
 @media (max-width: 900px) {
   .hero-content {
     padding: 40px 0;
+  }
+
+  .about-hero {
+    margin: 0px auto;
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .about-photo {
+    max-width: 200px;
+  }
+
+  .about-hero h1 {
+    font-size: 42px;
   }
 
   h1 {
