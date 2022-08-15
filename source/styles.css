@@ -1,31 +1,49 @@
 :root {
-  --branding-color: rgb(238, 238, 223);
+  --branding-color: #ece9e6;
   --content-color: #393944;
-  /* --secondary-color: rgb(169, 79, 65); */
-  --secondary-color: #a06541;
-  --button-color: rgb(133, 144, 108);
+  --heading-color: #287094;
+  /* --button-color: #363638; */
+  --secondary-color: #d25235;
+
   --heading-font-family: "Playfair Display", serif;
   --default-font-family: "Poppins", sans-serif;
 }
 
 body {
   font-family: var(--default-font-family);
-  background-color: var(--secondary-color);
+  background: var(--branding-color);
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ece9e6, #ffffff);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ece9e6, #ffffff);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   color: var(--content-color);
 }
 
 .container {
   margin: 20px auto;
   padding: 0;
+  padding-top: 1px;
   border-radius: 10px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
 }
 
 .hero {
-  margin: 0;
-  padding: 150px 0;
-  background: var(--branding-color);
+  margin: 20px;
+  /* border: 10px solid var(--content-color); */
+
+  background: #22c1c3;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #22c0c32e, #fdbb2d3d);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #22c0c32e, #fdbb2d3d);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.hero-content {
+  padding: 100px 150px;
   text-align: center;
 }
 
@@ -34,15 +52,24 @@ h2,
 h3,
 h4 {
   font-family: var(--heading-font-family);
+  color: var(--heading-color);
 }
 
 nav {
-  background: var(--branding-color);
-  border-radius: 10px;
+  margin: 0;
+}
+
+.navbar-brand,
+.nav-link {
+  color: var(--content-color);
+}
+
+.active {
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 h1 {
-  font-size: 132px;
+  font-size: 72px;
 }
 
 p {
@@ -60,22 +87,22 @@ p {
 
 .btn-branding {
   padding: 15px 30px;
-  background: var(--button-color);
-  border-radius: 10px;
+  background: var(--secondary-color);
+  border-radius: 30px;
   color: var(--branding-color);
   font-size: 18px;
 }
 
 .btn-branding-outline {
-  padding: 15px 30px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 30px;
   font-size: 18px;
-  color: var(--content-color);
-  border: 1px solid var(--content-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .main-section {
-  margin-bottom: 400px;
+  margin-bottom: 300px;
 }
 
 .main-section img {
@@ -93,16 +120,25 @@ p {
 }
 
 .mail-link {
-  font-size: 18px;
+  font-size: 16px;
+  border-radius: 30px;
+  color: var(--heading-color);
+}
+
+.social-footer {
+  /* border: 1px solid var(--secondary-color); */
+  border-radius: 100%;
+  /* color: var(--branding-color); */
+  /* background-color: var(--content-color); */
 }
 
 @media (max-width: 900px) {
-  .hero {
-    padding: 150px 0;
+  .hero-content {
+    padding: 40px 0;
   }
 
   h1 {
-    font-size: 56px;
+    font-size: 44px;
   }
 
   p {
