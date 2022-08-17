@@ -44,7 +44,7 @@ body {
 }
 
 .hero-content {
-  padding: 100px 150px;
+  padding: 150px 150px;
   text-align: center;
 }
 
@@ -138,6 +138,7 @@ p {
 
 .about-section {
   margin: 20px;
+  margin-bottom: 200px;
 }
 
 .about-hero {
@@ -163,6 +164,29 @@ p {
   border-radius: 100%;
   box-shadow: 100px 0px 200px #fdbb2d86, -100px 0px 200px #22c0c3a0,
     -10px 40px 80px #d2523595;
+}
+
+.section-skills {
+  margin-top: 200px;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+}
+
+.skill-img {
+  width: 80px;
+  margin: 0 30px;
+  padding: 0 10px;
+}
+
+.certificate-img {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  border-radius: 4px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 900px) {
@@ -205,5 +229,29 @@ p {
 
   .content-section-reverse p {
     margin-right: 0px;
+  }
+
+  .section-skills {
+    margin: 0;
+  }
+
+  .skills-list-both {
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 14px;
+  }
+
+  .skills-list-both img {
+    display: none;
+  }
+
+  .section-certificates h2 {
+    margin: 0;
+  }
+
+  .certificate-img {
+    display: none;
+    width: 200px;
   }
 }
