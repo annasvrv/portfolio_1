@@ -59,6 +59,8 @@ h4 {
 
 nav {
   margin: 0;
+  /* background: rgba(255, 255, 255, 0.6);
+  border-radius: 10px; */
 }
 
 .navbar-brand,
@@ -136,25 +138,24 @@ p {
 
 /* About Page */
 
-.about-section {
+.container-section {
   margin: 20px;
   margin-bottom: 200px;
 }
 
-.about-hero {
-  margin: 70px;
-  padding-top: 80px;
+.content {
+  margin: 80px 70px;
 }
 
-.about-section h1 {
+.container-section h1 {
   font-size: 48px;
 }
 
-.about-section h2 {
+.container-section h2 {
   font-size: 34px;
 }
 
-.about-section h3 {
+.container-section h3 {
   color: var(--content-color);
   font-size: 26px;
 }
@@ -189,12 +190,23 @@ p {
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
 }
 
+/* My Projects page */
+
+.img-section {
+  padding: 0 80px;
+  text-align: center;
+}
+
+.img-section img {
+  margin: 20px 0 40px;
+}
+
 @media (max-width: 900px) {
   .hero-content {
     padding: 40px 0;
   }
 
-  .about-hero {
+  .content {
     margin: 0px auto;
     padding-top: 50px;
     text-align: center;
@@ -204,7 +216,7 @@ p {
     max-width: 200px;
   }
 
-  .about-hero h1 {
+  .content h1 {
     font-size: 42px;
   }
 
@@ -253,5 +265,13 @@ p {
   .certificate-img {
     display: none;
     width: 200px;
+  }
+
+  .img-section h3 {
+    font-size: 24px;
+  }
+
+  .img-section img {
+    margin: 20px 0;
   }
 }
