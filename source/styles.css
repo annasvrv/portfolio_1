@@ -171,12 +171,12 @@ p {
   margin-top: 200px;
 }
 
-.skills-list {
+.icons-list {
   list-style: none;
   padding: 0;
 }
 
-.skill-img {
+.icon-img {
   width: 80px;
   margin: 0 30px;
   padding: 0 10px;
@@ -247,14 +247,14 @@ p {
     margin: 0;
   }
 
-  .skills-list-both {
+  .icon-list-both {
     margin: 0;
     display: flex;
     justify-content: space-evenly;
     font-size: 14px;
   }
 
-  .skills-list-both img {
+  .icon-list-both img {
     display: none;
   }
 
