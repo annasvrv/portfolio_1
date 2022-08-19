@@ -50,7 +50,9 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
   /* font-family: var(--brand-font-family); */
   font-family: var(--heading-font-family);
   color: var(--heading-color);
@@ -60,8 +62,6 @@ nav {
   margin: 0;
   border-radius: 10px;
 }
-
-
 
 .navbar-brand,
 .nav-link {
@@ -226,6 +226,51 @@ p {
 
 .work-inquiry-section h4 {
   font-size: 38px;
+}
+
+.cv-content {
+  margin: 0 30px;
+}
+
+.profile-column {
+  margin: 0px;
+  padding: 0 50px;
+}
+
+.cv-profile {
+  background: var(--brand-opacity-color);
+  border-radius: 4px;
+}
+
+.cv-profile img {
+  display: block;
+  margin: 40px auto 20px;
+  border: 30px solid white;
+}
+
+.cv-profile ul {
+  margin: 40px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+.cv-profile li {
+  line-height: 2.5;
+}
+
+.cv-profile i {
+  padding-right: 20px;
+}
+
+hr {
+  margin: 10px 0;
+  color: var(--secondary-color);
+  border-width: 3px;
+}
+
+.profile-column span {
+  float: right;
 }
 
 @media (max-width: 900px) {
