@@ -1,7 +1,7 @@
 :root {
   --branding-color: rgb(236, 233, 230);
   --brand-opacity-color: rgb(236, 233, 230, 0.5);
-  --content-color: rgb(57, 57, 68);
+  --content-color: #393944;
   --heading-color: #287094;
   /* --button-color: #363638; */
   --secondary-color: #d25235;
@@ -43,7 +43,7 @@ body {
 }
 
 .hero-content {
-  padding: 150px 150px;
+  padding: 100px;
   text-align: center;
 }
 
@@ -58,7 +58,6 @@ h4 {
 
 nav {
   margin: 0;
-  /* background: var(--branding-color); */
   border-radius: 10px;
 }
 

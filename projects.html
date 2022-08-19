@@ -30,17 +30,21 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/source/styles.css" />
-    <title>AnnaS - Front-end developer</title>
+    <title>Anna's projects - Front-end developer from Europe</title>
+    <meta
+      name="Description"
+      content="Take a look on Anna's recent projects and learn more about her code"
+    />
   </head>
   <body>
     <div class="container">
       <div class="container-section">
         <nav class="navbar navbar-expand-lg sticky-top">
           <div class="container-fluid nav-content">
-            <a class="navbar-brand ms-4" href="/">
+            <a class="navbar-brand ms-4" href="/" title="Homepage">
               <img
                 src="/images/logo.PNG"
-                alt="logo"
+                alt="logo AnnaS"
                 style="width: 78px"
                 class="d-none d-md-inline-block ms-4"
               />
@@ -55,7 +59,7 @@
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <div class="navbar-toggler-icon"></div>
+              <span class="navbar-toggler-icon"></span>
             </button>
             <div
               class="collapse navbar-collapse justify-content-end me-5"
@@ -63,18 +67,25 @@
             >
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="/">Home</a>
+                  <a class="nav-link" href="/" title="Homepage">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/about.html">About me</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="/projects.html"
-                    >My projects</a
+                  <a class="nav-link" href="/about.html" title="About Anna"
+                    >About me</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/contact.html">Contact me</a>
+                  <a
+                    class="nav-link active"
+                    href="/projects.html"
+                    title="Anna's projects"
+                    >My Projects</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/contact.html" title="Contact Anna"
+                    >Contact me</a
+                  >
                 </li>
               </ul>
             </div>
@@ -94,12 +105,14 @@
                 class="img-fluid"
               />
               <h3>Responsive porfolio website</h3>
-              <p class="mb-3 text-muted">Built with HTML, CSS, Bootstrap</p>
+              <p class="mb-3 text-muted">
+                A static website, built with HTML, CSS, Bootstrap
+              </p>
               <a
                 href="https://harbourproject-portfolio.netlify.app/"
                 class="btn btn-branding-outline"
                 target="_blank"
-                >Try it</a
+                >Try my work</a
               >
             </div>
             <div class="col-md-6 mb-4 img-section">
@@ -114,7 +127,7 @@
                 href="https://harbourproject-weather.netlify.app/"
                 class="btn btn-branding-outline"
                 target="_blank"
-                >Try it</a
+                >Try my work</a
               >
             </div>
           </div>
@@ -132,7 +145,7 @@
                 href="https://www.shecodes.io/workshops/shecodes-basics-10887242-fccf-4e21-a8f0-5bb9ea3f83ab/projects/855017"
                 class="btn btn-branding-outline"
                 target="_blank"
-                >Try it</a
+                >Try my work</a
               >
             </div>
             <div class="col-md-6 mb-4 img-section">
@@ -140,7 +153,7 @@
               <h3>Dictionary app</h3>
               <p class="mb-3 text-muted">Built with HTML, CSS, React</p>
               <a href="#" class="btn btn-branding-outline" target="_blank"
-                >Try it</a
+                >Try my work</a
               >
             </div>
           </div>
@@ -155,7 +168,7 @@
           <p class="text-muted m-0">Let's work together</p>
         </div>
         <div>
-          <a href="" class="btn btn-branding m-2">Contact me</a>
+          <a href="/contact.html" class="btn btn-branding m-2" title="Contact Anna">Contact me</a>
         </div>
       </div>
 
@@ -163,6 +176,7 @@
         <a
           href="mailto:anna.svrva@gmail.com"
           class="btn btn-branding-outline-footer mail-link"
+          title="Email Anna"
         >
           anna.svrva@gmail.com
         </a>
@@ -172,6 +186,7 @@
             href="https://www.linkedin.com/in/anna-svrv/"
             target="_blank"
             class="btn btn-branding-outline-footer social-footer me-3"
+            title="LinkedIn profile"
           >
             <i class="fa-brands fa-linkedin"></i>
           </a>
@@ -179,6 +194,7 @@
             href="https://github.com/annasvrv/portfolio_1"
             target="_blank"
             class="btn btn-branding-outline-footer social-footer me-3"
+            title="GitHub profile"
           >
             <i class="fa-brands fa-github"></i>
           </a>
@@ -186,6 +202,7 @@
             href="https://www.instagram.com/anna_svrv/"
             target="_blank"
             class="btn btn-branding-outline-footer social-footer me-3"
+            title="Instagram profile"
           >
             <i class="fa-brands fa-square-instagram"></i>
           </a>
@@ -193,10 +210,17 @@
             href="https://twitter.com/anna_svrv"
             target="_blank"
             class="btn btn-branding-outline-footer social-footer"
+            title="Twitter profile"
           >
             <i class="fa-brands fa-twitter"></i>
           </a>
         </div>
+
+        <p class="pb-2" style="font-size: 10px">
+          This project was made by
+          <a href="https://www.linkedin.com/in/anna-svrv/"> AnnaS</a>, and it is
+          <a href="https://github.com/annasvrv/portfolio_1"> open-sourced </a>
+        </p>
       </footer>
     </div>
   </body>
