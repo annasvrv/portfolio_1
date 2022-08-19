@@ -1,6 +1,7 @@
 :root {
-  --branding-color: #ece9e6;
-  --content-color: #393944;
+  --branding-color: rgb(236, 233, 230);
+  --brand-opacity-color: rgb(236, 233, 230, 0.5);
+  --content-color: rgb(57, 57, 68);
   --heading-color: #287094;
   /* --button-color: #363638; */
   --secondary-color: #d25235;
@@ -32,10 +33,8 @@ body {
 }
 
 .hero {
-  margin: 20px;
-  /* border: 10px solid var(--content-color); */
+  background: var(--brand-opacity-color);
 
-  background: #22c1c3;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #22c0c32e, #fdbb2d3d);
   /* Chrome 10-25, Safari 5.1-6 */
@@ -59,9 +58,11 @@ h4 {
 
 nav {
   margin: 0;
-  /* background: rgba(255, 255, 255, 0.6);
-  border-radius: 10px; */
+  /* background: var(--branding-color); */
+  border-radius: 10px;
 }
+
+
 
 .navbar-brand,
 .nav-link {
@@ -132,8 +133,8 @@ p {
 .social-footer {
   /* border: 1px solid var(--secondary-color); */
   border-radius: 100%;
-  /* color: var(--branding-color); */
-  /* background-color: var(--content-color); */
+  color: var(--content-color);
+  background-color: var(--brand-opacity-color);
 }
 
 /* About Page */
@@ -163,6 +164,9 @@ p {
 .about-photo {
   max-width: 300px;
   border-radius: 100%;
+}
+
+.brand-shadow {
   box-shadow: 100px 0px 200px #fdbb2d86, -100px 0px 200px #22c0c3a0,
     -10px 40px 80px #d2523595;
 }
@@ -199,6 +203,30 @@ p {
 
 .img-section img {
   margin: 20px 0 40px;
+}
+
+/* Contact page */
+
+.contact-link {
+  text-decoration: none;
+  color: var(--heading-color);
+}
+
+.contact-link:hover {
+  text-decoration: underline var(--secondary-color);
+  color: var(--heading-color);
+}
+
+.contact-box {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 30px 80px;
+  background: var(--brand-opacity-color);
+  border-radius: 10px;
+}
+
+.work-inquiry-section h4 {
+  font-size: 38px;
 }
 
 @media (max-width: 900px) {
@@ -273,5 +301,13 @@ p {
 
   .img-section img {
     margin: 20px 0;
+  }
+
+  .work-inquiry-section {
+    margin-bottom: 30px;
+  }
+
+  .work-inquiry-section p {
+    padding-top: 20px;
   }
 }
