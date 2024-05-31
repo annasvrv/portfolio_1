@@ -76,7 +76,8 @@ h1 {
   font-size: 72px;
 }
 
-p, .personal-info-about {
+p,
+.personal-info-about {
   font-size: 16px;
   line-height: 30px;
 }
@@ -240,7 +241,8 @@ p, .personal-info-about {
 }
 
 .cv-profile {
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
+  padding: 10px 20px 20px;
   background: var(--brand-opacity-color);
   border-radius: 4px;
 }
@@ -251,19 +253,24 @@ p, .personal-info-about {
   border: 30px solid white;
 }
 
-.cv-profile ul {
+.cv-profile-list {
   margin: 40px 0;
   padding: 0;
   list-style: none;
   font-size: 14px;
 }
 
-.cv-profile li {
+.cv-profile-list-item {
   line-height: 2.5;
 }
 
 .cv-profile i {
   padding-right: 20px;
+}
+
+.soft-skills-list {
+  font-size: 16px;
+  margin: 25px 0 0;
 }
 
 hr {
