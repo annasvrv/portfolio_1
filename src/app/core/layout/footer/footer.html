@@ -1,0 +1,36 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <a
+      class="footer__email"
+      [href]="'mailto:' + email"
+      [title]="'Email Anna at ' + email"
+    >
+      {{ email }}
+    </a>
+
+    <ul class="footer__socials" role="list" aria-label="Social profiles">
+      @for (social of socials; track social.href) {
+        <li class="footer__social-item">
+          <a
+            class="footer__social-link"
+            [href]="social.href"
+            [title]="social.label + ' profile'"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <hrb-icon [name]="social.icon" [label]="social.label" [size]="20" />
+          </a>
+        </li>
+      }
+    </ul>
+
+    <p class="footer__attribution">
+      &copy; {{ currentYear }} Anna Severova. Source on
+      <a
+        href="https://github.com/annasvrv/portfolio_1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >GitHub</a>.
+    </p>
+  </div>
+</footer>

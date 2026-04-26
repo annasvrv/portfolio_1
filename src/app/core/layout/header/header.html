@@ -1,0 +1,45 @@
+<header class="header" [class.header--menu-open]="isOpen()">
+  <div class="header__inner">
+    <a
+      class="header__brand"
+      routerLink="/"
+      title="Homepage"
+      (click)="close()"
+    >
+      AnnaS
+    </a>
+
+    <button
+      type="button"
+      class="header__toggle"
+      [attr.aria-expanded]="isOpen()"
+      aria-controls="primary-menu"
+      aria-label="Toggle navigation menu"
+      (click)="toggle()"
+    >
+      <hrb-icon [name]="isOpen() ? 'close' : 'menu'" [size]="24" />
+    </button>
+
+    <nav
+      id="primary-menu"
+      class="header__nav"
+      aria-label="Primary"
+    >
+      <ul class="header__menu" role="list">
+        @for (item of navItems; track item.path) {
+          <li class="header__menu-item">
+            <a
+              class="header__link"
+              [routerLink]="item.path"
+              [routerLinkActive]="'header__link--active'"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              [title]="item.title"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
