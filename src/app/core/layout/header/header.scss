@@ -1,0 +1,140 @@
+@use "../../../../styles/breakpoints" as breakpoints;
+@use "../../../../styles/mixins" as mixins;
+
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--hrb-color-background-page-soft);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--hrb-color-border-subtle);
+}
+
+.header {
+  &__inner {
+    @include mixins.container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+  }
+
+  &__brand {
+    font-family: var(--hrb-font-family-brand);
+    font-size: 24px;
+    font-weight: var(--hrb-font-weight-bold);
+    letter-spacing: var(--hrb-letter-spacing-brand);
+    color: var(--hrb-color-text-heading);
+    text-decoration: none;
+
+    &:hover { color: var(--hrb-color-accent-primary); }
+    &:focus-visible { @include mixins.focus-ring; }
+  }
+
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--hrb-color-text-heading);
+    border-radius: 8px;
+    transition: background-color 150ms ease;
+
+    &:hover { background: var(--hrb-color-background-page-soft); }
+    &:focus-visible { @include mixins.focus-ring; }
+
+    @include breakpoints.tab-s { display: none; }
+  }
+
+  &__nav {
+    // Mobile: full-width slide-down panel below the header bar.
+    position: absolute;
+    inset: 64px 0 auto 0;
+    background: var(--hrb-color-background-page);
+    border-bottom: 1px solid var(--hrb-color-border-subtle);
+    padding: 16px;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 200ms ease,
+      opacity 200ms ease,
+      visibility 200ms ease;
+
+    .header--menu-open & {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @include breakpoints.tab-s {
+      // Desktop: inline within the header bar, no toggle behavior.
+      position: static;
+      inset: auto;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      transition: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoints.tab-s {
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+
+  &__menu-item { display: block; }
+
+  &__link {
+    display: block;
+    padding: 12px 16px;
+    color: var(--hrb-color-text-body);
+    font-size: var(--hrb-font-size-body);
+    font-weight: var(--hrb-font-weight-semibold);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 150ms ease, color 150ms ease;
+
+    &:hover {
+      background: var(--hrb-color-background-page-soft);
+      color: var(--hrb-color-accent-primary);
+    }
+
+    &:focus-visible { @include mixins.focus-ring; }
+
+    &--active {
+      color: var(--hrb-color-accent-primary);
+
+      @include breakpoints.tab-s {
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 16px;
+          right: 16px;
+          bottom: 6px;
+          height: 2px;
+          background: var(--hrb-color-accent-primary);
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
