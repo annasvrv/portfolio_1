@@ -42,3 +42,6 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Generated sprite (rebuilt by prebuild/prestart hooks)
+/public/sprite.svg
