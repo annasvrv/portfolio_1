@@ -1,0 +1,31 @@
+@use "breakpoints" as breakpoints;
+
+// Visually hide an element while keeping it available to screen readers.
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Page-level horizontal container with responsive max-widths and gutters.
+@mixin container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 16px;
+
+  @include breakpoints.tab-s  { padding-inline: 32px; max-width: 1120px; }
+  @include breakpoints.desk-s { padding-inline: 48px; max-width: 1280px; }
+  @include breakpoints.desk-l { max-width: 1440px; }
+}
+
+// Accessible focus ring respecting :focus-visible.
+@mixin focus-ring {
+  outline: 2px solid var(--hrb-color-focus-ring);
+  outline-offset: 3px;
+}

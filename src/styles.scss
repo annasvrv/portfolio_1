@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+// Global stylesheet entry. Order matters:
+// 1. Tokens (custom properties) so the reset and base rules can reference them.
+// 2. Reset to normalize browser defaults.
+// 3. Base element styles that apply across the app.
+// Component-scoped rules live in each component's own .scss.
+
+@use "styles/palette";
+@use "styles/typography";
+@use "styles/breakpoints" as breakpoints;
+@use "styles/mixins" as mixins;
+@use "styles/reset";
+
+html {
+  background: var(--hrb-gradient-page-background) fixed;
+  color: var(--hrb-color-text-body);
+  font-family: var(--hrb-font-family-body);
+  font-size: var(--hrb-font-size-body);
+  font-weight: var(--hrb-font-weight-regular);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--hrb-font-family-display);
+  font-weight: var(--hrb-font-weight-bold);
+  line-height: var(--hrb-line-height-heading);
+  letter-spacing: var(--hrb-letter-spacing-heading);
+  color: var(--hrb-color-text-heading);
+}
+
+h1 { font-size: var(--hrb-font-size-heading-1); }
+h2 { font-size: var(--hrb-font-size-heading-2); }
+h3 { font-size: var(--hrb-font-size-heading-3); }
+h4 { font-size: var(--hrb-font-size-heading-4); }
+
+a {
+  color: var(--hrb-color-accent-primary);
+  transition: color 150ms ease;
+
+  &:hover {
+    color: var(--hrb-color-accent-primary-hover);
+  }
+
+  &:focus-visible {
+    @include mixins.focus-ring;
+  }
+}
+
+::selection {
+  background: var(--hrb-color-accent-primary);
+  color: var(--hrb-color-text-inverse);
+}
