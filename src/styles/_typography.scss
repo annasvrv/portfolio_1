@@ -1,0 +1,69 @@
+// Self-hosted font faces.
+// Files live in public/fonts/ and are served from /fonts/ at runtime.
+// `font-display: swap` lets text render in fallback while woff2 loads.
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/poppins-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/poppins-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/playfair-display-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Aboreto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/aboreto-400.woff2") format("woff2");
+}
+
+// Typography tokens — absolute px units, fluid type via clamp(px, vw, px),
+// unitless line-heights. All names use --hrb- prefix and full descriptive
+// vocabulary (no abbreviations).
+
+:root {
+  // Font families
+  --hrb-font-family-display: "Playfair Display", Georgia, serif;
+  --hrb-font-family-body:    "Poppins", system-ui, -apple-system, sans-serif;
+  --hrb-font-family-brand:   "Aboreto", "Playfair Display", serif;
+
+  // Font weights
+  --hrb-font-weight-regular:  400;
+  --hrb-font-weight-semibold: 600;
+  --hrb-font-weight-bold:     700;
+
+  // Font sizes — fluid where useful, absolute px elsewhere
+  --hrb-font-size-heading-1:    clamp(40px, 6vw, 72px);
+  --hrb-font-size-heading-2:    clamp(32px, 4vw, 48px);
+  --hrb-font-size-heading-3:    26px;
+  --hrb-font-size-heading-4:    20px;
+  --hrb-font-size-body:         16px;
+  --hrb-font-size-body-small:   14px;
+  --hrb-font-size-caption:      12px;
+
+  // Line heights (unitless)
+  --hrb-line-height-body:       1.875;
+  --hrb-line-height-heading:    1.15;
+  --hrb-line-height-tight:      1;
+
+  // Letter spacing
+  --hrb-letter-spacing-heading: -0.01em;
+  --hrb-letter-spacing-brand:    0.05em;
+}
