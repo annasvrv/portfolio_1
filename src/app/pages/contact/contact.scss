@@ -1,0 +1,55 @@
+@use "../../../styles/breakpoints" as breakpoints;
+@use "../../../styles/mixins" as mixins;
+
+:host { display: block; }
+
+.contact {
+  &__inner {
+    @include mixins.container;
+    padding-block: 48px 96px;
+
+    @include breakpoints.tab-s  { padding-block: 64px 96px; }
+    @include breakpoints.desk-s { padding-block: 96px 128px; max-width: 720px; }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__heading {
+    font-size: var(--hrb-font-size-heading-3);
+    color: var(--hrb-color-text-heading);
+    margin: 0;
+  }
+
+  &__link {
+    color: var(--hrb-color-accent-primary);
+    font-size: var(--hrb-font-size-heading-4);
+    text-decoration: none;
+    word-break: break-word;
+
+    &:hover {
+      color: var(--hrb-color-accent-primary-hover);
+      text-decoration: underline;
+    }
+
+    &:focus-visible { @include mixins.focus-ring; }
+  }
+}

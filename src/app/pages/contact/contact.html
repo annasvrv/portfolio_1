@@ -1,0 +1,28 @@
+<section class="contact">
+  <div class="contact__inner">
+    <header class="contact__header">
+      <h1>Let's get in touch!</h1>
+    </header>
+
+    <ul class="contact__list" role="list">
+      @for (item of contacts; track item.heading) {
+        <li class="contact__item">
+          <h2 class="contact__heading">{{ item.heading }}</h2>
+          <a
+            class="contact__link"
+            [href]="item.href"
+            [attr.target]="item.external ? '_blank' : null"
+            [attr.rel]="item.external ? 'noopener noreferrer' : null"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+
+      <li class="contact__item">
+        <h2 class="contact__heading">Course of life</h2>
+        <a class="contact__link" routerLink="/cv">CV</a>
+      </li>
+    </ul>
+  </div>
+</section>

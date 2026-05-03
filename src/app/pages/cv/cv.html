@@ -1,0 +1,81 @@
+<article class="cv">
+  <aside class="cv__sidebar" aria-label="Profile">
+    <header class="cv__profile">
+      <h1 class="cv__name">{{ profile.fullName }}</h1>
+      <p class="cv__role">{{ profile.title }}</p>
+    </header>
+
+    <ul class="cv__contact-list" role="list">
+      @for (link of profile.links; track link.label) {
+        <li class="cv__contact-item">
+          <hrb-icon [name]="link.icon" [size]="16" [label]="link.icon" />
+          @if (link.href) {
+            <a [href]="link.href" class="cv__contact-link">{{ link.label }}</a>
+          } @else {
+            <span>{{ link.label }}</span>
+          }
+        </li>
+      }
+    </ul>
+
+    <section class="cv__sidebar-section" aria-labelledby="profile-heading">
+      <h2 id="profile-heading" class="cv__sidebar-heading">Profile</h2>
+      @for (paragraph of profile.bio; track $index) {
+        <p class="cv__paragraph">{{ paragraph }}</p>
+      }
+
+      <p class="cv__paragraph cv__paragraph--emphasis">
+        {{ profile.personalLifeIntro }}
+      </p>
+      @for (item of profile.personalLife; track $index) {
+        <p class="cv__paragraph">{{ item }}</p>
+      }
+    </section>
+
+    <section class="cv__sidebar-section" aria-labelledby="soft-skills-heading">
+      <h2 id="soft-skills-heading" class="cv__sidebar-heading">Soft skills</h2>
+      <ul class="cv__soft-skills" role="list">
+        @for (skill of profile.softSkills; track skill) {
+          <li class="cv__soft-skill">{{ skill }}</li>
+        }
+      </ul>
+    </section>
+  </aside>
+
+  <section class="cv__main" aria-label="Career">
+    <h2 class="cv__main-heading">Timeline</h2>
+
+    <ol class="cv__timeline" role="list">
+      @for (entry of timeline; track entry.role) {
+        <li class="cv__timeline-entry">
+          <h3 class="cv__entry-role">{{ entry.role }}</h3>
+          <p class="cv__entry-meta">
+            <span class="cv__entry-org">{{ entry.organization }}</span>
+            <span class="cv__entry-period">{{ entry.period }}</span>
+          </p>
+          <ul class="cv__entry-bullets">
+            @for (bullet of entry.bullets; track bullet) {
+              <li>{{ bullet }}</li>
+            }
+          </ul>
+        </li>
+      }
+    </ol>
+
+    <h2 class="cv__main-heading">Languages</h2>
+    <ul class="cv__plain-list" role="list">
+      @for (language of languages; track language) {
+        <li>{{ language }}</li>
+      }
+    </ul>
+
+    <h2 class="cv__main-heading">Education</h2>
+    @for (item of education; track item.degree) {
+      <p class="cv__paragraph">
+        {{ item.degree }}<br />
+        <strong>{{ item.institution }}</strong>
+        <span class="cv__entry-period">{{ item.period }}</span>
+      </p>
+    }
+  </section>
+</article>

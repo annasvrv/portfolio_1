@@ -1,0 +1,27 @@
+<section class="projects">
+  <div class="projects__inner">
+    <header class="projects__header">
+      <h1 class="projects__title">My projects</h1>
+      <p class="projects__lede">
+        Here are the projects I have built during my front-end journey.
+      </p>
+    </header>
+
+    <ul class="projects__grid" role="list">
+      @for (project of projects; track project.slug; let i = $index) {
+        <li class="projects__item">
+          <hrb-project-card
+            [project]="project"
+            variant="stacked"
+            ctaLabel="View my work"
+            [isLcp]="i < 2"
+          />
+        </li>
+      }
+    </ul>
+
+    <div class="projects__cta-wrap">
+      <hrb-contact-cta />
+    </div>
+  </div>
+</section>

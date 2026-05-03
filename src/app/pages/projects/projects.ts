@@ -1,18 +1,17 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 
+import { ProjectCardComponent } from "../../shared/project-card/project-card";
+import { ContactCtaComponent } from "../../shared/contact-cta/contact-cta";
+import { projects } from "../../data/projects.data";
+
 @Component({
   selector: "hrb-projects-page",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <section class="page">
-      <h1>My projects</h1>
-      <p>Placeholder — real content in Phase 6.</p>
-    </section>
-  `,
-  styles: `
-    @use "../../../styles/mixins" as mixins;
-    .page { @include mixins.container; padding-block: 48px; }
-  `,
+  imports: [ProjectCardComponent, ContactCtaComponent],
+  templateUrl: "./projects.html",
+  styleUrl: "./projects.scss",
 })
-export class ProjectsPage {}
+export class ProjectsPage {
+  protected readonly projects = projects;
+}
