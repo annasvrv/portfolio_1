@@ -58,9 +58,14 @@
   // ----- Variants ---------------------------------------------------------
 
   // Default: image above, text below — used on /projects grid cards.
+  // Fills available height so the parent grid stretches all cards in a
+  // row equal; CTA pins to the bottom via the flex body.
   &--stacked {
-    @include breakpoints.tab-s {
-      grid-template-columns: 1fr;
+    height: 100%;
+    grid-template-rows: auto 1fr;
+
+    .project-card__cta {
+      margin-top: auto;
     }
   }
 

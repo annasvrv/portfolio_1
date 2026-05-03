@@ -1,10 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   HostListener,
+  PLATFORM_ID,
+  effect,
   inject,
   signal,
+  viewChild,
 } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { filter } from "rxjs/operators";
 
@@ -26,8 +31,14 @@ interface NavItem {
 })
 export class HeaderComponent {
   private readonly router = inject(Router);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
 
   protected readonly isOpen = signal(false);
+
+  // Element refs for focus management.
+  protected readonly toggleButton = viewChild<ElementRef<HTMLButtonElement>>("toggleButton");
+  protected readonly sidebar = viewChild<ElementRef<HTMLElement>>("sidebar");
 
   protected readonly navItems: readonly NavItem[] = [
     { path: "/",         label: "Home",        title: "Homepage" },
@@ -41,18 +52,44 @@ export class HeaderComponent {
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe(() => this.isOpen.set(false));
+
+    // Lock body scroll whenever the drawer is open. The CSS hides the
+    // drawer on tab-s+, so this is effectively a no-op on desktop.
+    effect(() => {
+      if (!this.isBrowser) return;
+      document.body.style.overflow = this.isOpen() ? "hidden" : "";
+    });
   }
 
   protected toggle(): void {
-    this.isOpen.update((open) => !open);
+    const willOpen = !this.isOpen();
+    this.isOpen.set(willOpen);
+    if (willOpen) {
+      this.focusFirstLink();
+    } else {
+      this.toggleButton()?.nativeElement.focus();
+    }
   }
 
   protected close(): void {
+    if (!this.isOpen()) return;
     this.isOpen.set(false);
+    this.toggleButton()?.nativeElement.focus();
   }
 
   @HostListener("document:keydown.escape")
   protected onEscape(): void {
     if (this.isOpen()) this.close();
+  }
+
+  // Defer to a microtask so the drawer's open transition has applied
+  // before we move focus into it.
+  private focusFirstLink(): void {
+    if (!this.isBrowser) return;
+    queueMicrotask(() => {
+      this.sidebar()
+        ?.nativeElement.querySelector<HTMLAnchorElement>("a")
+        ?.focus();
+    });
   }
 }

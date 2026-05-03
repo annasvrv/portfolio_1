@@ -13,6 +13,7 @@
       id="primary-menu"
       class="header__sidebar"
       [attr.aria-hidden]="!isOpen()"
+      #sidebar
     >
       <nav class="header__nav" aria-label="Primary">
         <ul class="header__menu" role="list">
@@ -40,6 +41,7 @@
       aria-controls="primary-menu"
       aria-label="Toggle navigation menu"
       (click)="toggle()"
+      #toggleButton
     >
       <hrb-icon [name]="isOpen() ? 'close' : 'menu'" [size]="24" />
     </button>
