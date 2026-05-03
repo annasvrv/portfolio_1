@@ -9,7 +9,7 @@
 
     <ul class="projects__grid" role="list">
       @for (project of projects; track project.slug; let i = $index) {
-        <li class="projects__item">
+        <li class="projects__item" [class.reveal]="i >= 2">
           <hrb-project-card
             [project]="project"
             variant="stacked"

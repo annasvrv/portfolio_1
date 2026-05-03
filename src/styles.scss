@@ -10,6 +10,7 @@
 @use "styles/mixins" as mixins;
 @use "styles/reset";
 @use "styles/buttons";
+@use "styles/animations";
 
 html {
   background: var(--hrb-gradient-page-background) fixed;
