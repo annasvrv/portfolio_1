@@ -1,0 +1,16 @@
+<section class="hero">
+  <div class="hero__inner">
+    <p class="hero__greeting">{{ greeting() }}</p>
+    <h1 class="hero__title">{{ title() }}</h1>
+    <p class="hero__subtitle">{{ subtitle() }}</p>
+
+    @if (ctaLabel()) {
+      <a
+        class="btn btn--branding hero__cta"
+        [routerLink]="ctaPath()"
+      >
+        {{ ctaLabel() }}
+      </a>
+    }
+  </div>
+</section>
