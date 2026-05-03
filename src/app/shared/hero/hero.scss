@@ -1,0 +1,42 @@
+@use "../../../styles/breakpoints" as breakpoints;
+@use "../../../styles/mixins" as mixins;
+
+:host {
+  display: block;
+  background: var(--hrb-gradient-hero-background);
+}
+
+.hero {
+  &__inner {
+    @include mixins.container;
+    padding-block: 64px;
+    text-align: center;
+
+    @include breakpoints.tab-s  { padding-block: 96px; }
+    @include breakpoints.desk-s { padding-block: 128px; text-align: left; }
+  }
+
+  &__greeting {
+    font-size: var(--hrb-font-size-heading-2);
+    color: var(--hrb-color-text-heading);
+    margin-bottom: 16px;
+    font-family: var(--hrb-font-family-display);
+    font-weight: var(--hrb-font-weight-bold);
+  }
+
+  &__title {
+    font-size: var(--hrb-font-size-heading-1);
+    color: var(--hrb-color-text-heading);
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    font-size: var(--hrb-font-size-heading-3);
+    color: var(--hrb-color-text-body);
+    margin-bottom: 32px;
+  }
+
+  &__cta {
+    margin-top: 8px;
+  }
+}

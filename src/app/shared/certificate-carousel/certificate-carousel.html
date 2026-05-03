@@ -1,0 +1,51 @@
+<section
+  class="carousel"
+  aria-roledescription="carousel"
+  aria-label="Certificates"
+>
+  <div
+    class="carousel__viewport"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    @if (activeCertificate(); as current) {
+      <hrb-certificate-card [certificate]="current" loading="eager" />
+    }
+  </div>
+
+  <div class="carousel__controls">
+    <button
+      type="button"
+      class="carousel__button"
+      aria-label="Previous certificate"
+      (click)="previous()"
+    >
+      <hrb-icon name="arrow-right" [size]="20" />
+    </button>
+
+    <ul class="carousel__dots" role="tablist">
+      @for (item of items(); track item.title; let idx = $index) {
+        <li class="carousel__dot-item">
+          <button
+            type="button"
+            class="carousel__dot"
+            [class.carousel__dot--active]="idx === activeIndex()"
+            role="tab"
+            [attr.aria-selected]="idx === activeIndex()"
+            [attr.aria-label]="'Show certificate ' + (idx + 1)"
+            (click)="goTo(idx)"
+          ></button>
+        </li>
+      }
+    </ul>
+
+    <button
+      type="button"
+      class="carousel__button"
+      aria-label="Next certificate"
+      (click)="next()"
+    >
+      <hrb-icon name="arrow-right" [size]="20" />
+    </button>
+  </div>
+</section>
