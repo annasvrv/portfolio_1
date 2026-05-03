@@ -1,0 +1,41 @@
+@use "../../../styles/breakpoints" as breakpoints;
+@use "../../../styles/mixins" as mixins;
+
+:host { display: block; }
+
+.featured {
+  &__inner {
+    @include mixins.container;
+    padding-block: 48px;
+
+    @include breakpoints.tab-s  { padding-block: 64px; }
+    @include breakpoints.desk-s { padding-block: 96px; }
+  }
+
+  &__lede {
+    text-align: center;
+    color: var(--hrb-color-text-muted);
+    font-size: var(--hrb-font-size-heading-4);
+    margin-bottom: 48px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoints.desk-s { gap: 96px; }
+  }
+
+  &__item { display: block; }
+}
+
+.cta-wrap {
+  &__inner {
+    @include mixins.container;
+    padding-block: 48px 96px;
+  }
+}

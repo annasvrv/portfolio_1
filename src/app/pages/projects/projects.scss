@@ -1,0 +1,53 @@
+@use "../../../styles/breakpoints" as breakpoints;
+@use "../../../styles/mixins" as mixins;
+
+:host { display: block; }
+
+.projects {
+  &__inner {
+    @include mixins.container;
+    padding-block: 48px 96px;
+
+    @include breakpoints.tab-s  { padding-block: 64px 96px; }
+    @include breakpoints.desk-s { padding-block: 96px 128px; }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 48px;
+
+    @include breakpoints.tab-s { margin-bottom: 64px; }
+  }
+
+  &__title { margin-bottom: 16px; }
+
+  &__lede {
+    color: var(--hrb-color-text-muted);
+    font-size: var(--hrb-font-size-heading-4);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin: 0 0 64px;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoints.tab-s {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    @include breakpoints.desk-s {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+  }
+
+  &__item { display: block; }
+
+  &__cta-wrap {
+    margin-top: 32px;
+  }
+}

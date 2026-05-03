@@ -1,0 +1,28 @@
+<hrb-hero title="Front-end developer" />
+
+<section class="featured" aria-labelledby="featured-heading">
+  <div class="featured__inner">
+    <p id="featured-heading" class="featured__lede">
+      Some of my projects I've been working on recently
+    </p>
+
+    <ul class="featured__list" role="list">
+      @for (project of projects; track project.slug; let i = $index) {
+        <li class="featured__item">
+          <hrb-project-card
+            [project]="project"
+            [variant]="variantFor(i)"
+            ctaLabel="Demo"
+            [isLcp]="i === 0"
+          />
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="cta-wrap">
+  <div class="cta-wrap__inner">
+    <hrb-contact-cta />
+  </div>
+</section>
