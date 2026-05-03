@@ -1,5 +1,5 @@
 <header class="header" [class.header--menu-open]="isOpen()">
-  <div class="header__inner">
+  <div class="header__bar">
     <a
       class="header__brand"
       routerLink="/"
@@ -8,6 +8,30 @@
     >
       AnnaS
     </a>
+
+    <aside
+      id="primary-menu"
+      class="header__sidebar"
+      [attr.aria-hidden]="!isOpen()"
+    >
+      <nav class="header__nav" aria-label="Primary">
+        <ul class="header__menu" role="list">
+          @for (item of navItems; track item.path) {
+            <li class="header__menu-item">
+              <a
+                class="header__link"
+                [routerLink]="item.path"
+                [routerLinkActive]="'header__link--active'"
+                [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+                [title]="item.title"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </aside>
 
     <button
       type="button"
@@ -19,27 +43,11 @@
     >
       <hrb-icon [name]="isOpen() ? 'close' : 'menu'" [size]="24" />
     </button>
-
-    <nav
-      id="primary-menu"
-      class="header__nav"
-      aria-label="Primary"
-    >
-      <ul class="header__menu" role="list">
-        @for (item of navItems; track item.path) {
-          <li class="header__menu-item">
-            <a
-              class="header__link"
-              [routerLink]="item.path"
-              [routerLinkActive]="'header__link--active'"
-              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-              [title]="item.title"
-            >
-              {{ item.label }}
-            </a>
-          </li>
-        }
-      </ul>
-    </nav>
   </div>
+
+  <div
+    class="header__backdrop"
+    aria-hidden="true"
+    (click)="close()"
+  ></div>
 </header>

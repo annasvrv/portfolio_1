@@ -33,7 +33,6 @@ export class HeaderComponent {
     { path: "/",         label: "Home",        title: "Homepage" },
     { path: "/about",    label: "About me",    title: "About Anna" },
     { path: "/projects", label: "My projects", title: "Anna's projects" },
-    { path: "/cv",       label: "CV",          title: "Anna's CV" },
     { path: "/contact",  label: "Contact me",  title: "Contact Anna" },
   ];
 

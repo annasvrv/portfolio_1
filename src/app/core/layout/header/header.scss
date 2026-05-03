@@ -1,6 +1,11 @@
 @use "../../../../styles/breakpoints" as breakpoints;
 @use "../../../../styles/mixins" as mixins;
 
+// Header height anchors the mobile sidebar (top + height calc) and the
+// backdrop offset. Adjust here if the bar grows.
+$header-height: 64px;
+$sidebar-max-width: 412px;
+
 :host {
   display: block;
   position: sticky;
@@ -12,13 +17,13 @@
 }
 
 .header {
-  &__inner {
+  &__bar {
     @include mixins.container;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    min-height: 64px;
+    min-height: $header-height;
   }
 
   &__brand {
@@ -49,40 +54,69 @@
     @include breakpoints.tab-s { display: none; }
   }
 
-  &__nav {
-    // Mobile: full-width slide-down panel below the header bar.
-    position: absolute;
-    inset: 64px 0 auto 0;
-    background: var(--hrb-color-background-page);
-    border-bottom: 1px solid var(--hrb-color-border-subtle);
-    padding: 16px;
-    transform: translateY(-8px);
+  // Click-catcher behind the sidebar that dims the page on mobile.
+  &__backdrop {
+    position: fixed;
+    inset: $header-height 0 0 0;
+    background: rgb(0 0 0 / 0.4);
     opacity: 0;
     visibility: hidden;
     transition:
-      transform 200ms ease,
       opacity 200ms ease,
       visibility 200ms ease;
+    z-index: 40;
 
     .header--menu-open & {
-      transform: translateY(0);
       opacity: 1;
       visibility: visible;
     }
 
     @include breakpoints.tab-s {
-      // Desktop: inline within the header bar, no toggle behavior.
-      position: static;
-      inset: auto;
-      background: transparent;
-      border: 0;
-      padding: 0;
-      transform: none;
-      opacity: 1;
-      visibility: visible;
-      transition: none;
+      display: none;
     }
   }
+
+  // Mobile (mob-s base): right-side slide-in drawer pinned below the
+  // header bar, filling the remaining viewport height. max-width caps
+  // it at 412px on wider phones / small tablets.
+  &__sidebar {
+    position: fixed;
+    top: $header-height;
+    right: 0;
+    width: 100%;
+    max-width: $sidebar-max-width;
+    height: calc(100dvh - #{$header-height});
+    background: var(--hrb-color-background-page);
+    border-left: 1px solid var(--hrb-color-border-subtle);
+    box-shadow: -4px 0 24px rgb(0 0 0 / 0.08);
+    padding: 24px 16px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 250ms ease;
+    z-index: 45;
+
+    .header--menu-open & {
+      transform: translateX(0);
+    }
+
+    // Desktop: drawer collapses into inline content within the bar.
+    @include breakpoints.tab-s {
+      position: static;
+      width: auto;
+      max-width: none;
+      height: auto;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      overflow: visible;
+      transform: none;
+      transition: none;
+      margin-left: auto;
+    }
+  }
+
+  &__nav { width: 100%; }
 
   &__menu {
     display: flex;
