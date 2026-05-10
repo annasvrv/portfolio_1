@@ -1,105 +1,46 @@
-<article class="about">
-  <section class="about__intro">
-    <div class="about__intro-text">
-      <p class="about__greeting">Hi! I'm Anna</p>
-      <h1 class="about__title">A Front-end developer</h1>
-      <p class="about__subtitle">from Europe</p>
+<section class="about">
+  <header class="about__head">
+    <p class="eyebrow">About me</p>
+    <h1 class="about__title">
+      From the steppes of <em>Ukraine</em> to a small Mediterranean port — the long way to the <em>front&nbsp;end</em>.
+    </h1>
+  </header>
 
-      <div class="about__bio">
-        <p>
-          I'm excited about transitioning to front-end development. Armed
-          with a solid foundation acquired through comprehensive courses
-          in HTML, CSS, JavaScript, and React from SheCodes, I'm ready to
-          bring digital visions to life.
-        </p>
-        <p>
-          My professional path is rooted in a background as a GIS
-          Specialist, where I honed skills in geocoding and
-          problem-solving. I successfully climbed from an entry-level
-          position to a middle-level role. This experience, combined with
-          my new-found expertise in front-end technologies, equips me to
-          tackle challenges with both a strategic mindset and a knack for
-          detail.
-        </p>
-        <p>
-          My learning journey is a testament to my relentless pursuit of
-          growth and adaptability. My experiences have shown me the value
-          of versatility and the power of acquiring new skills, which I'm
-          eager to channel into creating innovative web solutions.
-        </p>
-        <p>
-          I'm excited to connect with like-minded professionals and embark
-          on projects that demand creativity, precision, and a
-          forward-thinking approach. Let's collaborate, innovate, and turn
-          ideas into captivating web experiences.
-        </p>
+  <div class="about__body">
+    <figure class="about__portrait">
+      <img src="/images/photo_4.jpg" alt="Portrait of Anna" />
+    </figure>
 
-        <p class="about__list-intro">In my personal life I am:</p>
-        <ul class="about__list">
-          @for (item of personalLife; track $index) {
-            <li class="about__list-item">{{ item }}</li>
-          }
-        </ul>
+    <div class="about__copy">
+      <p>
+        I started in GIS — geocoding, spatial data, the kind of pixel-precision work that demands attention to detail. Climbed from junior to mid-level, then leaned into a long interest in interfaces.
+      </p>
+      <p class="about__copy-muted">
+        Now I&rsquo;m an HTML/Markup developer at BrainRocket in Larnaca. The Mediterranean shaped how I think about pace and quiet — I try to bring those qualities into my work.
+      </p>
 
-        <p>
-          Life isn't just about the profession; it's about the rich
-          tapestry of experiences and interests that make us who we are.
-          These interests shape my worldview and enrich my professional
-          endeavours, driving me to approach each day with curiosity and
-          enthusiasm.
-        </p>
-      </div>
-
-      <a class="btn btn--branding about__cta" routerLink="/projects">
-        See my projects
-      </a>
-    </div>
-
-    <picture class="about__photo">
-      <img
-        src="/images/photo_4.jpg"
-        alt="Photo of Anna"
-        width="600"
-        height="600"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </picture>
-  </section>
-
-  <section class="about__section reveal" aria-labelledby="skills-heading">
-    <h2 id="skills-heading" class="about__section-heading">Skills</h2>
-    <ul class="about__skills" role="list">
-      @for (skill of skills; track skill.name) {
-        <li class="about__skills-item">
-          <hrb-skill-icon [skill]="skill" />
-        </li>
-      }
-    </ul>
-  </section>
-
-  <section class="about__section reveal" aria-labelledby="certificates-heading">
-    <h2 id="certificates-heading" class="about__section-heading">
-      Certificates
-    </h2>
-
-    <div class="about__certificates-grid">
-      <ul class="about__certificates-list" role="list">
-        @for (certificate of certificates; track certificate.title) {
-          <li class="about__certificates-item">
-            <hrb-certificate-card [certificate]="certificate" />
+      <h3 class="about__values-title">What I value</h3>
+      <ul class="about__values" role="list">
+        @for (value of values; track value.title) {
+          <li class="about__value">
+            <span class="about__value-dot" aria-hidden="true"></span>
+            <div>
+              <span class="about__value-name">{{ value.title }}</span>
+              <span class="about__value-body">{{ value.body }}</span>
+            </div>
           </li>
         }
       </ul>
     </div>
+  </div>
 
-    <div class="about__certificates-carousel">
-      <hrb-certificate-carousel [items]="certificates" />
+  <aside class="about__off-screen">
+    <div class="about__off-screen-watermark" aria-hidden="true">
+      <hrb-logo [size]="96" [watermark]="true" />
     </div>
-  </section>
-
-  <section class="about__cta-wrap reveal">
-    <hrb-contact-cta />
-  </section>
-</article>
+    <p class="eyebrow">Off-screen</p>
+    <h3 class="about__off-screen-quote">
+      I run, I swim, I read late, I watch stars. The sea is honest — that&rsquo;s why I keep coming back to it.
+    </h3>
+  </aside>
+</section>

@@ -1,23 +1,20 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
 
-import { HeroComponent } from "../../shared/hero/hero";
-import { ProjectCardComponent, ProjectCardVariant } from "../../shared/project-card/project-card";
-import { ContactCtaComponent } from "../../shared/contact-cta/contact-cta";
-import { featuredProjects } from "../../data/projects.data";
+import { LogoComponent } from "../../shared/logo/logo";
+import { WaveUnderlineComponent } from "../../shared/wave-underline/wave-underline";
+import { featuredProjects, projects } from "../../data/projects.data";
 
 @Component({
   selector: "hrb-home-page",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [HeroComponent, ProjectCardComponent, ContactCtaComponent],
+  imports: [RouterLink, LogoComponent, WaveUnderlineComponent],
   templateUrl: "./home.html",
   styleUrl: "./home.scss",
 })
 export class HomePage {
-  protected readonly projects = featuredProjects;
-
-  // Alternate split / split-reverse layouts down the page (matches legacy).
-  protected variantFor(index: number): ProjectCardVariant {
-    return index % 2 === 0 ? "split" : "split-reverse";
-  }
+  protected readonly featured = featuredProjects;
+  protected readonly featuredCount = featuredProjects.length;
+  protected readonly totalCount = projects.length;
 }

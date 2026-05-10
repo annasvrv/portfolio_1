@@ -1,28 +1,48 @@
-<hrb-hero title="Front-end developer" />
+<section class="home">
+  <div class="home__hero">
+    <div class="home__hero-copy">
+      <p class="eyebrow">Front-end developer</p>
+      <h1 class="home__hero-title">
+        Hello — I&rsquo;m <em>Anna</em>. I build calm, careful interfaces from a quiet stretch of coastline.
+      </h1>
+      <hrb-wave-underline width="320" />
+      <p class="home__hero-body">
+        Ukrainian by origin, Cypriot by sea. I work as a front-end developer at BrainRocket and care most about typography, accessibility, and the slow craft of getting a thing right.
+      </p>
+      <div class="home__hero-cta">
+        <a class="btn btn--primary" routerLink="/projects">See my work →</a>
+        <a class="btn btn--secondary" routerLink="/about">About me</a>
+      </div>
+    </div>
 
-<section class="featured" aria-labelledby="featured-heading">
-  <div class="featured__inner">
-    <p id="featured-heading" class="featured__lede">
-      Some of my projects I've been working on recently
-    </p>
+    <div class="home__hero-portrait">
+      <img src="/images/photo_4.jpg" alt="Portrait of Anna" />
+      <div class="home__hero-sticker" aria-hidden="true">
+        <hrb-logo [size]="26" />
+        <span>open for work</span>
+      </div>
+    </div>
+  </div>
 
-    <ul class="featured__list" role="list">
-      @for (project of projects; track project.slug; let i = $index) {
-        <li class="featured__item reveal">
-          <hrb-project-card
-            [project]="project"
-            [variant]="variantFor(i)"
-            ctaLabel="Demo"
-            [isLcp]="i === 0"
-          />
+  <div class="home__work">
+    <div class="home__work-head">
+      <h2>Recent <em>work</em></h2>
+      <span class="eyebrow">{{ featuredCount }} of {{ totalCount }} ↗</span>
+    </div>
+    <ul class="home__work-grid" role="list">
+      @for (project of featured; track project.slug) {
+        <li class="home__work-card">
+          <a [href]="project.demoUrl" target="_blank" rel="noopener noreferrer" class="home__work-link">
+            <div class="home__work-frame">
+              <img [src]="project.image.src" [alt]="project.image.alt" loading="lazy" />
+            </div>
+            <div class="home__work-meta">
+              <h3>{{ project.title }}</h3>
+              <span class="eyebrow">{{ project.tag }} · {{ project.year }}</span>
+            </div>
+          </a>
         </li>
       }
     </ul>
-  </div>
-</section>
-
-<section class="cta-wrap">
-  <div class="cta-wrap__inner reveal">
-    <hrb-contact-cta />
   </div>
 </section>
