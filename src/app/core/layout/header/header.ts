@@ -13,7 +13,9 @@ import { isPlatformBrowser } from "@angular/common";
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { filter } from "rxjs/operators";
 
-import { IconComponent } from "../../icon/icon";
+import { LogoComponent } from "../../../shared/logo/logo";
+import { WaveUnderlineComponent } from "../../../shared/wave-underline/wave-underline";
+import { ThemeService } from "../../theme/theme.service";
 
 interface NavItem {
   readonly path: string;
@@ -25,7 +27,7 @@ interface NavItem {
   selector: "hrb-header",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, RouterLinkActive, IconComponent],
+  imports: [RouterLink, RouterLinkActive, LogoComponent, WaveUnderlineComponent],
   templateUrl: "./header.html",
   styleUrl: "./header.scss",
 })
@@ -33,28 +35,24 @@ export class HeaderComponent {
   private readonly router = inject(Router);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
+  protected readonly theme = inject(ThemeService);
 
   protected readonly isOpen = signal(false);
-
-  // Element refs for focus management.
   protected readonly toggleButton = viewChild<ElementRef<HTMLButtonElement>>("toggleButton");
   protected readonly sidebar = viewChild<ElementRef<HTMLElement>>("sidebar");
 
   protected readonly navItems: readonly NavItem[] = [
-    { path: "/",         label: "Home",        title: "Homepage" },
-    { path: "/about",    label: "About me",    title: "About Anna" },
-    { path: "/projects", label: "My projects", title: "Anna's projects" },
-    { path: "/contact",  label: "Contact me",  title: "Contact Anna" },
+    { path: "/",         label: "Home",     title: "Homepage" },
+    { path: "/about",    label: "About",    title: "About Anna" },
+    { path: "/projects", label: "Projects", title: "Selected work" },
+    { path: "/contact",  label: "Contact",  title: "Get in touch" },
   ];
 
   constructor() {
-    // Close the mobile menu on every successful navigation.
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe(() => this.isOpen.set(false));
 
-    // Lock body scroll whenever the drawer is open. The CSS hides the
-    // drawer on tab-s+, so this is effectively a no-op on desktop.
     effect(() => {
       if (!this.isBrowser) return;
       document.body.style.overflow = this.isOpen() ? "hidden" : "";
@@ -77,13 +75,15 @@ export class HeaderComponent {
     this.toggleButton()?.nativeElement.focus();
   }
 
+  protected toggleTheme(): void {
+    this.theme.toggle();
+  }
+
   @HostListener("document:keydown.escape")
   protected onEscape(): void {
     if (this.isOpen()) this.close();
   }
 
-  // Defer to a microtask so the drawer's open transition has applied
-  // before we move focus into it.
   private focusFirstLink(): void {
     if (!this.isBrowser) return;
     queueMicrotask(() => {
