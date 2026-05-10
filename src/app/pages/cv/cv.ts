@@ -1,24 +1,27 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 
-import { IconComponent } from "../../core/icon/icon";
 import {
   education,
+  experience,
+  interests,
   languages,
   profile,
-  timeline,
+  skills,
 } from "../../data/cv.data";
 
 @Component({
   selector: "hrb-cv-page",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [IconComponent],
+  imports: [],
   templateUrl: "./cv.html",
   styleUrl: "./cv.scss",
 })
 export class CvPage {
   protected readonly profile = profile;
-  protected readonly timeline = timeline;
-  protected readonly languages = languages;
+  protected readonly skills = skills;
+  protected readonly experience = experience;
   protected readonly education = education;
+  protected readonly languages = languages;
+  protected readonly interests = interests;
 }
