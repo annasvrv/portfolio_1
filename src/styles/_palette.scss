@@ -1,29 +1,58 @@
-// Color tokens — all values in space-separated rgb() notation.
+// Color tokens — Direction C (Personal & Poetic).
+// Light is the default; dark applies under [data-theme="dark"] on <html>.
 // Names follow --hrb-color-{role}-{variant} convention.
-// Sourced from legacy/source/styles.css.
 
 :root {
   // Surfaces
-  --hrb-color-background-page:        rgb(236 233 230);
-  --hrb-color-background-page-soft:   rgb(236 233 230 / 0.5);
-  --hrb-color-background-elevated:    rgb(255 255 255);
+  --hrb-color-background-page:        #f0ebdd; // Cream
+  --hrb-color-background-page-soft:   rgb(240 235 221 / 0.6);
+  --hrb-color-surface:                #f8f4e8; // Sand
+  --hrb-color-surface-deep:           #e2dcc8; // Stone
+  --hrb-color-background-elevated:    var(--hrb-color-surface);
 
   // Text
-  --hrb-color-text-body:              rgb(57 57 68);
-  --hrb-color-text-heading:           rgb(40 112 148);
-  --hrb-color-text-muted:             rgb(57 57 68 / 0.7);
-  --hrb-color-text-inverse:           rgb(255 255 255);
+  --hrb-color-text-body:              #1f2a2e; // Ink
+  --hrb-color-text-heading:           #1f2a2e;
+  --hrb-color-text-muted:             rgb(31 42 46 / 0.55);
+  --hrb-color-text-inverse:           #f0ebdd;
 
   // Brand / accent
-  --hrb-color-accent-primary:         rgb(210 82 53);
-  --hrb-color-accent-primary-hover:   color-mix(in srgb, var(--hrb-color-accent-primary) 85%, rgb(0 0 0));
-  --hrb-color-accent-secondary:       rgb(40 112 148);
+  --hrb-color-accent-primary:         #4f7373; // Sea
+  --hrb-color-accent-primary-hover:   #3d5c5c;
+  --hrb-color-accent-primary-pressed: #324d4d;
+  --hrb-color-accent-secondary:       #8fa89b; // Sage
 
   // Borders & focus
-  --hrb-color-border-subtle:          rgb(57 57 68 / 0.15);
-  --hrb-color-focus-ring:             rgb(40 112 148);
+  --hrb-color-border-subtle:          rgb(31 42 46 / 0.14);
+  --hrb-color-focus-ring:             rgb(79 115 115 / 0.45);
 
-  // Gradients (preserved from legacy body / .hero)
-  --hrb-gradient-page-background:     linear-gradient(180deg, rgb(236 233 230) 0%, rgb(255 255 255) 100%);
-  --hrb-gradient-hero-background:     linear-gradient(90deg, rgb(236 233 230) 0%, rgb(255 255 255) 100%);
+  // Status
+  --hrb-color-status-error:           #b05656;
+
+  // Legacy aliases — kept so existing components compile during the redesign.
+  --hrb-gradient-page-background:     var(--hrb-color-background-page);
+  --hrb-gradient-hero-background:     var(--hrb-color-background-page);
+}
+
+[data-theme="dark"] {
+  --hrb-color-background-page:        #16211e; // Deep Pine
+  --hrb-color-background-page-soft:   rgb(22 33 30 / 0.6);
+  --hrb-color-surface:                #1b2724; // Pine
+  --hrb-color-surface-deep:           #22302d; // Spruce
+  --hrb-color-background-elevated:    var(--hrb-color-surface);
+
+  --hrb-color-text-body:              #f0ebdd; // Cream
+  --hrb-color-text-heading:           #f0ebdd;
+  --hrb-color-text-muted:             rgb(240 235 221 / 0.55);
+  --hrb-color-text-inverse:           #16211e;
+
+  --hrb-color-accent-primary:         #9cc0bd; // Sea Mist
+  --hrb-color-accent-primary-hover:   #b0cdca;
+  --hrb-color-accent-primary-pressed: #c4dad7;
+  --hrb-color-accent-secondary:       #b5c9bb; // Sage Mist
+
+  --hrb-color-border-subtle:          rgb(240 235 221 / 0.14);
+  --hrb-color-focus-ring:             rgb(156 192 189 / 0.45);
+
+  --hrb-color-status-error:           #d28080;
 }

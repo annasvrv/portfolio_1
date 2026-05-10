@@ -1,69 +1,121 @@
-// Self-hosted font faces.
-// Files live in public/fonts/ and are served from /fonts/ at runtime.
-// `font-display: swap` lets text render in fallback while woff2 loads.
+// Self-hosted font faces — Direction C.
+// Cormorant Garamond is a variable font (weight 300–700, upright + italic).
+// DM Sans is a variable font (weight 100–1000) — we use 400/500/600/700.
+// Both ship as woff2 in /public/fonts/, served from /fonts/ at runtime.
 
 @font-face {
-  font-family: "Poppins";
+  font-family: "Cormorant Garamond";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 600;
   font-display: swap;
-  src: url("/fonts/poppins-400.woff2") format("woff2");
+  src: url("/fonts/cormorant-garamond-upright-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Poppins";
+  font-family: "Cormorant Garamond";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400 600;
   font-display: swap;
-  src: url("/fonts/poppins-600.woff2") format("woff2");
+  src: url("/fonts/cormorant-garamond-upright-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
 }
 
 @font-face {
-  font-family: "Playfair Display";
+  font-family: "Cormorant Garamond";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400 600;
   font-display: swap;
-  src: url("/fonts/playfair-display-700.woff2") format("woff2");
+  src: url("/fonts/cormorant-garamond-upright-cyr.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
 @font-face {
-  font-family: "Aboreto";
-  font-style: normal;
-  font-weight: 400;
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400 500;
   font-display: swap;
-  src: url("/fonts/aboreto-400.woff2") format("woff2");
+  src: url("/fonts/cormorant-garamond-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-// Typography tokens — absolute px units, fluid type via clamp(px, vw, px),
-// unitless line-heights. All names use --hrb- prefix and full descriptive
-// vocabulary (no abbreviations).
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/fonts/cormorant-garamond-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/fonts/cormorant-garamond-italic-cyr.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/dm-sans-upright-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/dm-sans-upright-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+// Typography tokens — Direction C scale.
+// Display: Cormorant Garamond (serif) · Body: DM Sans (sans).
 
 :root {
-  // Font families
-  --hrb-font-family-display: "Playfair Display", Georgia, serif;
-  --hrb-font-family-body:    "Poppins", system-ui, -apple-system, sans-serif;
-  --hrb-font-family-brand:   "Aboreto", "Playfair Display", serif;
+  --hrb-font-family-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --hrb-font-family-body:    "DM Sans", system-ui, -apple-system, sans-serif;
+  --hrb-font-family-brand:   "Cormorant Garamond", Georgia, serif;
 
-  // Font weights
   --hrb-font-weight-regular:  400;
+  --hrb-font-weight-medium:   500;
   --hrb-font-weight-semibold: 600;
   --hrb-font-weight-bold:     700;
 
-  // Font sizes — fluid where useful, absolute px elsewhere
-  --hrb-font-size-heading-1:    clamp(40px, 6vw, 72px);
-  --hrb-font-size-heading-2:    clamp(32px, 4vw, 48px);
-  --hrb-font-size-heading-3:    26px;
-  --hrb-font-size-heading-4:    20px;
+  // Scale: display 1/2, heading, body, small, eyebrow.
+  --hrb-font-size-display-1:    clamp(40px, 6vw, 64px);
+  --hrb-font-size-display-2:    clamp(32px, 4vw, 40px);
+  --hrb-font-size-heading-1:    var(--hrb-font-size-display-1);
+  --hrb-font-size-heading-2:    var(--hrb-font-size-display-2);
+  --hrb-font-size-heading-3:    28px;
+  --hrb-font-size-heading-4:    22px;
   --hrb-font-size-body:         16px;
-  --hrb-font-size-body-small:   14px;
+  --hrb-font-size-body-small:   13px;
   --hrb-font-size-caption:      12px;
+  --hrb-font-size-eyebrow:      11px;
 
-  // Line heights (unitless)
-  --hrb-line-height-body:       1.875;
-  --hrb-line-height-heading:    1.15;
+  --hrb-line-height-display:    1.05;
+  --hrb-line-height-heading:    1.2;
+  --hrb-line-height-body:       1.65;
   --hrb-line-height-tight:      1;
 
-  // Letter spacing
-  --hrb-letter-spacing-heading: -0.01em;
-  --hrb-letter-spacing-brand:    0.05em;
+  --hrb-letter-spacing-display: -0.005em;
+  --hrb-letter-spacing-heading: -0.005em;
+  --hrb-letter-spacing-eyebrow: 0.22em;
+  --hrb-letter-spacing-brand:   0.005em;
 }

@@ -1,3 +1,24 @@
+// Motion tokens — kept short and honest per the Direction C spec.
+:root {
+  --hrb-motion-duration: 200ms;
+  --hrb-motion-ease:     ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --hrb-motion-duration: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 // Scroll-driven reveal animations using `animation-timeline: view()`.
 // Progressive enhancement — only browsers that support it AND users
 // who haven't requested reduced motion get the effect. Everyone else
