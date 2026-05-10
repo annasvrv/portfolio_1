@@ -28,10 +28,6 @@
 
   // Status
   --hrb-color-status-error:           #b05656;
-
-  // Legacy aliases — kept so existing components compile during the redesign.
-  --hrb-gradient-page-background:     var(--hrb-color-background-page);
-  --hrb-gradient-hero-background:     var(--hrb-color-background-page);
 }
 
 [data-theme="dark"] {

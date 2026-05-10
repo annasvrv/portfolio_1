@@ -1,146 +1,124 @@
-// CV page data: profile, timeline, soft skills, languages, education.
+// CV page data — ported from /Users/harbour/Documents/cv_anna_suvorova.html
+// (2026-05-10 export). Mirrors the layout exactly: skills bar, profile
+// paragraph, experience entries, two-column education grid, languages
+// and interests footer.
 
-export interface ProfileLink {
-  readonly icon: string;
+export interface ContactLink {
   readonly label: string;
   readonly href?: string;
 }
 
-export interface TimelineEntry {
-  readonly role: string;
-  readonly organization: string;
+export interface SkillTag {
+  readonly label: string;
+  /** Visual emphasis. `core` renders as a solid pill. */
+  readonly variant: "core" | "default";
+}
+
+export interface ExperienceEntry {
+  readonly title: string;
+  readonly company: string;
   readonly period: string;
+  /** Optional progression line, e.g. "Trainee → Junior → Middle". */
+  readonly progression?: string;
   readonly bullets: readonly string[];
 }
 
 export interface EducationEntry {
-  readonly degree: string;
-  readonly institution: string;
-  readonly period: string;
+  readonly name: string;
+  readonly school: string;
+  readonly detail: string;
 }
 
 export const profile = {
   fullName: "Anna Suvorova",
-  title: "Junior Front-end Developer",
+  title: "Middle HTML/CSS Developer",
+  location: "Larnaca, Cyprus, 6041",
+  email: "anna.svrva@gmail.com",
   links: [
-    { icon: "map-pin",  label: "Larnaca, Cyprus, 6041" },
-    { icon: "mail",     label: "anna.svrva@gmail.com",      href: "mailto:anna.svrva@gmail.com" },
-    { icon: "github",   label: "github.com/annasvrv",       href: "https://github.com/annasvrv" },
-    { icon: "linkedin", label: "linkedin.com/in/anna-svrv", href: "https://www.linkedin.com/in/anna-svrv/" },
-  ] satisfies readonly ProfileLink[] as readonly ProfileLink[],
-
-  bio: [
-    "I'm excited about transitioning to front-end development. Armed with a solid foundation acquired through comprehensive courses in HTML, CSS, JavaScript, and React, I'm ready to bring digital visions to life.",
-    "My professional path is rooted in a background as a GIS Specialist, where I honed skills in geocoding and problem-solving. I successfully progressed from an entry-level position to a middle-level role. This experience, combined with my new-found expertise in front-end technologies, equips me to tackle challenges with both a strategic mindset and a knack for detail.",
-    "I'm excited to connect with like-minded professionals and embark on projects that demand creativity, precision, and a forward-thinking approach. Let's collaborate, innovate, and turn ideas into captivating web experiences.",
-  ],
-
-  personalLifeIntro: "In my personal life I am:",
-  personalLife: [
-    "An Amateur Swimmer and Runner: I find solace in the water and strength on the track, which parallels my problem-solving approach, determination and discipline.",
-    "A Stargazer: I'm fascinated by the mysteries of the universe, and stargazing fuels my curiosity and creativity.",
-    "A Travel Enthusiast: One of my greatest joys is traveling with my family, exploring new landscapes and cultures.",
-    "An Avid Reader: Books are a never-ending source of knowledge and inspiration for me, driving my thirst for learning.",
-    "A Lifelong Learner: I'm constantly seeking opportunities to acquire new skills and broaden my expertise.",
-  ],
-
-  softSkills: [
-    "Analytical skills",
-    "Problem solving skills",
-    "Attentive to details",
-    "Critical thinking",
-    "Result oriented",
-    "Responsible",
-    "Fast learner",
-    "Adaptable to company requirements",
-  ],
+    { label: "github.com/annasvrv",   href: "https://github.com/annasvrv" },
+    { label: "linkedin.com/in/annasvrv", href: "https://www.linkedin.com/in/annasvrv/" },
+  ] satisfies readonly ContactLink[] as readonly ContactLink[],
+  /** Path served from public/. Update when the PDF export is refreshed. */
+  pdfHref: "/anna-suvorova-cv.pdf",
+  summary:
+    "HTML/CSS Developer with 1.5 years of hands-on experience in a multi-brand iGaming environment, working across 10+ brands. Comfortable working independently — from Figma mockups to implementing features without designer support when needed. Grew from Trainee to Middle level in 1.5 years. Previous background in navigation data authoring sharpened an eye for precision and working to strict technical specifications.",
 } as const;
 
-export const timeline: readonly TimelineEntry[] = [
-  {
-    role: "Student Front-end developer",
-    organization: "SheCodes",
-    period: "May 2022 — Sep 2022",
-    bullets: [
-      "Advanced HTML, CSS, JavaScript",
-      "Visual Studio Code",
-      "Google Developer Tools",
-      "Flexbox and responsive design",
-      "Figma",
-      "Bootstrap",
-      "API and hosting on Netlify",
-      "GitHub",
-      "Search Engine Optimisation",
-      "React",
-    ],
-  },
-  {
-    role: "Student of \"IT Fundamentals for Ukrainians\"",
-    organization: "EPAM University",
-    period: "May 2022 — Jul 2022",
-    bullets: [
-      "IT fundamentals — basics of computer science",
-      "IT fundamentals — basics of programming",
-      "IT fundamentals — math for IT",
-      "Version control with Git",
-      "Introduction to SQL",
-      "Software development methodologies",
-      "Front-end basics",
-      "Cloud overview",
-    ],
-  },
-  {
-    role: "Student manual tester",
-    organization: "QATestLab",
-    period: "January 2022",
-    bullets: [
-      "Writing bug reports in Mantis and Jira",
-      "Writing test cases in TestLink",
-      "Working with checklists",
-      "Layout, localization, functional and cross-browser testing",
-      "Mobile app testing",
-      "Game testing",
-      "Extracting crash logs via Xcode",
-      "Screenshot tools (TechSmith)",
-    ],
-  },
-  {
-    role: "Geocoder",
-    organization: "Intetics",
-    period: "May 2019 — Jun 2021",
-    bullets: [
-      "GeoCoding",
-      "Internal QIL",
-      "Bug fixing",
-      "Jira task reports and doubt logs",
-      "Coding to specification",
-      "Confluence and SharePoint",
-      "Phone calls and meetings with foreign colleagues",
-    ],
-  },
-  {
-    role: "Student of \"Python for Everybody\"",
-    organization: "Coursera.org",
-    period: "Mar 2016 — Jun 2016",
-    bullets: [
-      "Programming for Everybody (Getting Started with Python)",
-      "Python Data Structures",
-      "Using Databases with Python",
-      "Using Python to Access Web Data",
-    ],
-  },
+export const skills: readonly SkillTag[] = [
+  { label: "HTML5",    variant: "core" },
+  { label: "CSS3",     variant: "core" },
+  { label: "SCSS/SASS", variant: "core" },
+  { label: "BEM",      variant: "core" },
+  { label: "Git",                    variant: "default" },
+  { label: "GitHub",                 variant: "default" },
+  { label: "GitLab",                 variant: "default" },
+  { label: "Figma",                  variant: "default" },
+  { label: "Chrome DevTools",        variant: "default" },
+  { label: "Responsive Design",      variant: "default" },
+  { label: "Cross-browser Compatibility", variant: "default" },
+  { label: "PWA",                    variant: "default" },
+  { label: "Performance Optimization", variant: "default" },
+  { label: "SEO Basics",             variant: "default" },
+  { label: "Basic Angular",          variant: "default" },
 ];
 
-export const languages: readonly string[] = [
-  "Ukrainian — native",
-  "English — upper intermediate",
-  "Russian — fluent",
+export const experience: readonly ExperienceEntry[] = [
+  {
+    title: "Middle HTML/CSS Developer",
+    company: "BrainRocket Ltd · Limassol, Cyprus",
+    period: "Nov 2024 — Present",
+    progression: "Trainee → Junior → Middle",
+    bullets: [
+      "Developed and maintained UI across 10+ iGaming brands as part of a brand support team.",
+      "Styled new features from core codebase across brand variants; resolved cross-browser bugs including scroll-lock issues, animation glitches, and dynamic image sizing.",
+      "Configured PWA assets (icons, apple-touch-icon) and optimized images and animations for smoother load performance.",
+      "Independently implemented UI changes without designer availability, using brand guidelines and visual judgment; approved by Product Owner.",
+      "Progressed Trainee → Junior (6 months) → Middle (+12 months) via internal skill matrix assessment.",
+    ],
+  },
+  {
+    title: "Geocoding Specialist",
+    company: "Intetics",
+    period: "May 2019 — Jun 2021",
+    bullets: [
+      "Authored road network data for navigation systems using proprietary map editing software and video-source footage from street-level capture vehicles.",
+      "Extracted and encoded detailed geographic attributes per project scope: road types, lane counts, toll points, traffic signs, speed limits, roundabouts, and built-up area boundaries.",
+      "Maintained strict accuracy standards under internal quality inspection (QIL) process.",
+      "Tracked tasks, bugs and ambiguities in Jira; documented processes via Confluence and SharePoint.",
+      "Collaborated with international teams across calls and async workflows.",
+    ],
+  },
 ];
 
 export const education: readonly EducationEntry[] = [
   {
-    degree: "Advanced degree of International Economy",
-    institution: "DonNTU",
-    period: "Sep 2002 — Jun 2007",
+    name: "HTML/Markup Developer",
+    school: "BroAcademy · Jun — Sep 2024",
+    detail: "SCSS, BEM, Figma, Git, SEO, animations, Flexbox/Grid",
+  },
+  {
+    name: "Frontend Developer",
+    school: "SheCodes · May — Sep 2022",
+    detail: "JavaScript, React, Bootstrap, API integration, Netlify",
+  },
+  {
+    name: "IT Fundamentals",
+    school: "EPAM University · May — Jul 2022",
+    detail: "Programming basics, Git, SQL, dev methodologies",
+  },
+  {
+    name: "Business Communication",
+    school: "INIKA English School · Sep — Dec 2023",
+    detail: "Professional writing, presentations, cross-cultural communication",
+  },
+  {
+    name: "International Economy",
+    school: "DonNTU · 2002 — 2007",
+    detail: "Advanced degree",
   },
 ];
+
+export const languages =
+  "Ukrainian (Native) · English (Upper Intermediate) · Russian (Fluent)";
+
+export const interests = "Amateur swimmer and runner.";
