@@ -1,36 +1,22 @@
 <footer class="footer">
   <div class="footer__inner">
-    <a
-      class="footer__email"
-      [href]="'mailto:' + email"
-      [title]="'Email Anna at ' + email"
-    >
-      {{ email }}
-    </a>
+    <div class="footer__top">
+      <div class="footer__brand">
+        <hrb-logo [size]="42" />
+        <p class="footer__tagline">
+          from the Black Sea<br />to the Mediterranean.
+        </p>
+      </div>
 
-    <ul class="footer__socials" role="list" aria-label="Social profiles">
-      @for (social of socials; track social.href) {
-        <li class="footer__social-item">
-          <a
-            class="footer__social-link"
-            [href]="social.href"
-            [title]="social.label + ' profile'"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <hrb-icon [name]="social.icon" [label]="social.label" [size]="20" />
-          </a>
-        </li>
-      }
-    </ul>
+      <div class="footer__contact">
+        <a class="footer__email" [href]="'mailto:' + email">{{ email }}</a>
+        <p class="footer__location">Larnaca, Cyprus</p>
+      </div>
+    </div>
 
-    <p class="footer__attribution">
-      &copy; {{ currentYear }} Anna Severova. Source on
-      <a
-        href="https://github.com/annasvrv/portfolio_1"
-        target="_blank"
-        rel="noopener noreferrer"
-      >GitHub</a>.
-    </p>
+    <div class="footer__bottom">
+      <span>© Anna Suvorova · {{ currentYear }}</span>
+      <span>Made slowly · with care</span>
+    </div>
   </div>
 </footer>
