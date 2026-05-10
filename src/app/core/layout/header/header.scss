@@ -6,13 +6,19 @@
 $header-height: 64px;
 $sidebar-max-width: 412px;
 
+// IMPORTANT: do NOT put `backdrop-filter`, `filter`, `transform`, or
+// `perspective` anywhere on the header or its descendants. Those CSS
+// properties make the element a *containing block* for `position: fixed`
+// descendants — which would trap the mobile sidebar inside the header
+// element (only bar-tall) instead of letting it position against the
+// viewport. The result is a sidebar that visibly stretches the page
+// and creates horizontal scroll on mobile.
 :host {
   display: block;
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--hrb-color-background-page-soft);
-  backdrop-filter: blur(8px);
+  background: var(--hrb-color-background-page);
   border-bottom: 1px solid var(--hrb-color-border-subtle);
 }
 
@@ -27,6 +33,9 @@ $sidebar-max-width: 412px;
   }
 
   &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--hrb-font-family-brand);
     font-size: 24px;
     font-weight: var(--hrb-font-weight-bold);
@@ -36,6 +45,16 @@ $sidebar-max-width: 412px;
 
     &:hover { color: var(--hrb-color-accent-primary); }
     &:focus-visible { @include mixins.focus-ring; }
+  }
+
+  &__brand-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  &__brand-name {
+    line-height: 1;
   }
 
   &__toggle {
