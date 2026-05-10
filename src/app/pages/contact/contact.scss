@@ -1,55 +1,112 @@
 @use "../../../styles/breakpoints" as breakpoints;
 @use "../../../styles/mixins" as mixins;
 
-:host { display: block; }
-
 .contact {
-  &__inner {
-    @include mixins.container;
-    padding-block: 48px 96px;
+  width: 100%;
+  margin-inline: auto;
+  max-width: 1280px;
+  padding: 20px 22px 28px;
 
-    @include breakpoints.tab-s  { padding-block: 64px 96px; }
-    @include breakpoints.desk-s { padding-block: 96px 128px; max-width: 720px; }
-  }
+  @include breakpoints.tab-s { padding: 32px 64px 48px; }
+}
 
-  &__header {
-    text-align: center;
-    margin-bottom: 48px;
-  }
+.contact__head {
+  margin-bottom: 24px;
+}
 
-  &__list {
-    display: flex;
-    flex-direction: column;
+.contact__title {
+  margin: 16px 0 6px;
+  font-family: var(--hrb-font-family-display);
+  font-weight: var(--hrb-font-weight-regular);
+  font-size: clamp(42px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+}
+
+.contact__intro {
+  margin: 18px 0 0;
+  max-width: 520px;
+  font-size: var(--hrb-font-size-body);
+  line-height: 1.65;
+  color: var(--hrb-color-text-muted);
+}
+
+.contact__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+
+  @include breakpoints.tab-s {
+    grid-template-columns: 1fr 1fr;
     gap: 32px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-align: center;
+  }
+}
+
+.contact__card {
+  padding: 22px;
+  border-radius: 18px;
+
+  @include breakpoints.tab-s { padding: 32px; }
+
+  &--email {
+    background: var(--hrb-color-surface);
+    border: 1px solid var(--hrb-color-border-subtle);
   }
 
-  &__item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  &--elsewhere {
+    background: var(--hrb-color-surface-deep);
   }
+}
 
-  &__heading {
-    font-size: var(--hrb-font-size-heading-3);
-    color: var(--hrb-color-text-heading);
-    margin: 0;
+.contact__email {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--hrb-font-family-display);
+  font-size: clamp(24px, 4vw, 32px);
+  color: var(--hrb-color-text-body);
+  text-decoration: none;
+
+  &:hover { color: var(--hrb-color-accent-primary); }
+  &:focus-visible { @include mixins.focus-ring; }
+}
+
+.contact__note {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  color: var(--hrb-color-text-muted);
+}
+
+.contact__rows {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+
+  & + & {
+    border-top: 1px solid var(--hrb-color-border-subtle);
   }
+}
 
-  &__link {
-    color: var(--hrb-color-accent-primary);
-    font-size: var(--hrb-font-size-heading-4);
-    text-decoration: none;
-    word-break: break-word;
+.contact__row-key {
+  font-family: var(--hrb-font-family-display);
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--hrb-color-text-body);
+}
 
-    &:hover {
-      color: var(--hrb-color-accent-primary-hover);
-      text-decoration: underline;
-    }
+.contact__row-value {
+  font-size: 13px;
+  font-weight: var(--hrb-font-weight-medium);
+  color: var(--hrb-color-text-body);
+  text-decoration: none;
 
-    &:focus-visible { @include mixins.focus-ring; }
-  }
+  &:hover { color: var(--hrb-color-accent-primary); }
+  &:focus-visible { @include mixins.focus-ring; }
 }
