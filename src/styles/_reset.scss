@@ -14,6 +14,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;        // belt-and-suspenders against horizontal scroll
 }
 
 html:focus-within {
@@ -25,6 +26,7 @@ body {
   line-height: var(--hrb-line-height-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 img,

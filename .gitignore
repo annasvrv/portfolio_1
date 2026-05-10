@@ -45,3 +45,15 @@ Thumbs.db
 
 # Generated sprite (rebuilt by prebuild/prestart hooks)
 /public/sprite.svg
+
+# Generated favicon set + PWA manifest (rebuilt by prebuild/prestart hooks).
+# Source of truth is src/brand/logo.svg.
+/public/logo.svg
+/public/logo.png
+/public/logo@2x.png
+/public/favicon.svg
+/public/favicon-96.png
+/public/apple-touch-icon.png
+/public/icon-192.png
+/public/icon-512.png
+/public/site.webmanifest

@@ -6,7 +6,21 @@
       title="Homepage"
       (click)="close()"
     >
-      AnnaS
+      <!--
+        Logo: PNG (1x + 2x retina) by default. SVG variant is also
+        served at /logo.svg — to compare, swap the src/srcset to that.
+      -->
+      <img
+        class="header__brand-logo"
+        src="/logo.png"
+        srcset="/logo.png 1x, /logo@2x.png 2x"
+        alt=""
+        width="32"
+        height="32"
+        decoding="async"
+        aria-hidden="true"
+      />
+      <span class="header__brand-name">AnnaS</span>
     </a>
 
     <aside
