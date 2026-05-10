@@ -72,6 +72,18 @@ a {
   }
 }
 
+.eyebrow {
+  display: inline-block;
+  font-family: var(--hrb-font-family-body);
+  font-size: var(--hrb-font-size-eyebrow);
+  font-weight: var(--hrb-font-weight-semibold);
+  letter-spacing: var(--hrb-letter-spacing-eyebrow);
+  text-transform: uppercase;
+  color: var(--hrb-color-accent-primary);
+}
+
+.eyebrow--muted { color: var(--hrb-color-text-muted); }
+
 ::selection {
   background: var(--hrb-color-accent-primary);
   color: var(--hrb-color-text-inverse);
