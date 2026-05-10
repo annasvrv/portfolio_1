@@ -1,61 +1,149 @@
 @use "../../../styles/breakpoints" as breakpoints;
 @use "../../../styles/mixins" as mixins;
 
-:host { display: block; }
-
 .projects {
-  &__inner {
-    @include mixins.container;
-    padding-block: 48px 96px;
+  width: 100%;
+  margin-inline: auto;
+  max-width: 1280px;
+  padding: 12px 22px 32px;
 
-    @include breakpoints.tab-s  { padding-block: 64px 96px; }
-    @include breakpoints.desk-s { padding-block: 96px 128px; }
-  }
+  @include breakpoints.tab-s { padding: 16px 64px 56px; }
+}
 
-  &__header {
-    text-align: center;
-    margin-bottom: 48px;
+.projects__head {
+  margin-bottom: 20px;
 
-    @include breakpoints.tab-s { margin-bottom: 64px; }
-  }
+  @include breakpoints.tab-s { margin-bottom: 32px; }
+}
 
-  &__title { margin-bottom: 16px; }
+.projects__title {
+  margin: 16px 0 6px;
+  font-family: var(--hrb-font-family-display);
+  font-weight: var(--hrb-font-weight-regular);
+  font-size: clamp(40px, 6vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+}
 
-  &__lede {
-    color: var(--hrb-color-text-muted);
-    font-size: var(--hrb-font-size-heading-4);
-  }
+.projects__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    // align-items: stretch (default) makes every card in a row the same
-    // height. The card's body uses flex so the CTA pins to the bottom,
-    // giving aligned CTAs across cards even when descriptions vary.
+  @include breakpoints.tab-s { gap: 32px; }
+}
+
+.projects__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  align-items: center;
+  background: var(--hrb-color-surface);
+  border: 1px solid var(--hrb-color-border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+
+  @include breakpoints.tab-s {
+    grid-template-columns: 1.1fr 1fr;
     gap: 32px;
-    margin: 0 0 64px;
-    padding: 0;
-    list-style: none;
-
-    @include breakpoints.tab-s {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-
-    @include breakpoints.desk-s {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
-    }
   }
+}
 
-  &__item {
-    display: flex;          // stretch the card to fill the grid cell
-    height: 100%;
+.projects__row--reverse {
+  @include breakpoints.tab-s {
+    grid-template-columns: 1fr 1.1fr;
 
-    & > hrb-project-card { width: 100%; }
+    .projects__frame { order: 2; }
+    .projects__copy  { order: 1; }
   }
+}
 
-  &__cta-wrap {
-    margin-top: 32px;
+.projects__frame {
+  aspect-ratio: 16 / 10;
+  background: var(--hrb-color-surface-deep);
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 10% 12%;
+    width: 76%;
+    border-radius: 6px;
+    box-shadow: 0 14px 26px rgb(0 0 0 / 0.12);
   }
+}
+
+.projects__frame-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  color: var(--hrb-color-text-muted);
+}
+
+.projects__copy {
+  padding: 4px 18px 18px;
+
+  @include breakpoints.tab-s { padding: 0 32px; }
+}
+
+.projects__index {
+  font-family: var(--hrb-font-family-display);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--hrb-color-accent-primary);
+}
+
+.projects__name {
+  margin: 4px 0 0;
+  font-family: var(--hrb-font-family-display);
+  font-weight: var(--hrb-font-weight-regular);
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.1;
+}
+
+.projects__desc {
+  margin: 10px 0 14px;
+  max-width: 420px;
+  font-size: var(--hrb-font-size-body-small);
+  line-height: 1.6;
+  color: var(--hrb-color-text-muted);
+
+  @include breakpoints.tab-s { font-size: 14px; }
+}
+
+.projects__links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.projects__link {
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--hrb-color-text-body);
+  padding-bottom: 2px;
+
+  &:focus-visible { @include mixins.focus-ring; }
+}
+
+.projects__link--demo {
+  font-weight: var(--hrb-font-weight-medium);
+  border-bottom: 1px solid var(--hrb-color-accent-primary);
+
+  &:hover {
+    color: var(--hrb-color-accent-primary);
+  }
+}
+
+.projects__link--source {
+  color: var(--hrb-color-text-muted);
+
+  &:hover { color: var(--hrb-color-text-body); }
 }
