@@ -1,58 +1,102 @@
 @use "mixins" as mixins;
 
-// Branded button utilities. Apply to <a> or <button>.
-//   .btn               — base reset (display, sizing, focus)
-//   .btn--branding     — solid filled accent button
-//   .btn--branding-outline — outlined variant
+// Branded button utilities — Direction C.
+//   .btn                — base reset (display, sizing, focus)
+//   .btn--primary       — solid Sea pill (primary CTA)
+//   .btn--secondary     — Ink outline pill
+//   .btn--ghost         — underlined inline link, no chrome
+//
+// The legacy aliases (.btn--branding, .btn--branding-outline) map onto the
+// new variants so existing markup keeps working through the redesign.
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 14px 24px;
   font-family: var(--hrb-font-family-body);
-  font-size: var(--hrb-font-size-body);
-  font-weight: var(--hrb-font-weight-semibold);
+  font-size: var(--hrb-font-size-body-small);
+  font-weight: var(--hrb-font-weight-medium);
   line-height: 1;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  border-radius: 30px;
-  border: 2px solid transparent;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
   cursor: pointer;
   transition:
-    background-color 150ms ease,
-    color 150ms ease,
-    border-color 150ms ease,
-    transform 150ms ease;
+    background-color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    border-color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    box-shadow var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    transform var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease);
 
   &:focus-visible {
     @include mixins.focus-ring;
   }
 
-  &:active {
-    transform: translateY(1px);
+  &:active:not(:disabled) {
+    transform: translateY(0);
   }
 
+  &:disabled,
+  &[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  &--primary,
   &--branding {
     background: var(--hrb-color-accent-primary);
     color: var(--hrb-color-text-inverse);
     border-color: var(--hrb-color-accent-primary);
 
-    &:hover {
+    &:hover:not(:disabled) {
       background: var(--hrb-color-accent-primary-hover);
       border-color: var(--hrb-color-accent-primary-hover);
       color: var(--hrb-color-text-inverse);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgb(79 115 115 / 0.25);
+    }
+
+    &:active:not(:disabled) {
+      background: var(--hrb-color-accent-primary-pressed);
+      border-color: var(--hrb-color-accent-primary-pressed);
+      transform: translateY(0);
+      box-shadow: none;
     }
   }
 
+  &--secondary,
   &--branding-outline {
     background: transparent;
-    color: var(--hrb-color-accent-primary);
-    border-color: var(--hrb-color-accent-primary);
+    color: var(--hrb-color-text-body);
+    border-color: var(--hrb-color-text-body);
 
-    &:hover {
-      background: var(--hrb-color-accent-primary);
-      color: var(--hrb-color-text-inverse);
+    &:hover:not(:disabled) {
+      background: var(--hrb-color-text-body);
+      color: var(--hrb-color-background-page);
+    }
+
+    &:active:not(:disabled) {
+      background: #000;
+      color: var(--hrb-color-background-page);
+      border-color: #000;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--hrb-color-text-body);
+    border-color: transparent;
+    padding: 12px 0;
+    border-radius: 0;
+
+    &:hover:not(:disabled) {
+      color: var(--hrb-color-accent-primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--hrb-color-accent-primary);
     }
   }
 }
