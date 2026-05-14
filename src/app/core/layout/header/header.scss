@@ -36,7 +36,7 @@ $sidebar-max-width: 412px;
 
   &__brand {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 14px;
     color: var(--hrb-color-text-heading);
     text-decoration: none;
