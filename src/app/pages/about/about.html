@@ -36,7 +36,7 @@
 
   <aside class="about__off-screen">
     <div class="about__off-screen-watermark" aria-hidden="true">
-      <hrb-logo [size]="96" [watermark]="true" />
+      <hrb-logo [size]="viewport.pb768() ? 96 : 64" />
     </div>
     <p class="eyebrow">Off-screen</p>
     <h3 class="about__off-screen-quote">

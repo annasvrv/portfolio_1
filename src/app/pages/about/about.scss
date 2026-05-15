@@ -1,5 +1,5 @@
-@use "../../../styles/breakpoints" as breakpoints;
-@use "../../../styles/mixins" as mixins;
+@use '../../../styles/breakpoints' as breakpoints;
+@use '../../../styles/mixins' as mixins;
 
 .about {
   width: 100%;
@@ -7,7 +7,9 @@
   max-width: 1280px;
   padding: 12px 22px 28px;
 
-  @include breakpoints.tab-s { padding: 16px 64px 48px; }
+  @include breakpoints.tab-s {
+    padding: 16px 64px 48px;
+  }
 }
 
 .about__head {
@@ -44,7 +46,9 @@
   overflow: hidden;
   aspect-ratio: 4 / 5;
 
-  @include breakpoints.tab-s { max-width: 360px; }
+  @include breakpoints.tab-s {
+    max-width: 360px;
+  }
 
   img {
     width: 100%;
@@ -74,7 +78,9 @@
   font-weight: var(--hrb-font-weight-regular);
   font-size: clamp(22px, 2.5vw, 28px);
 
-  @include breakpoints.tab-s { margin-top: 36px; }
+  @include breakpoints.tab-s {
+    margin-top: 36px;
+  }
 }
 
 .about__values {
@@ -112,7 +118,9 @@
   font-size: var(--hrb-font-size-body-small);
   color: var(--hrb-color-text-muted);
 
-  @include breakpoints.tab-s { font-size: 14px; }
+  @include breakpoints.tab-s {
+    font-size: 14px;
+  }
 }
 
 .about__off-screen {
@@ -122,15 +130,19 @@
   border-radius: 18px;
   padding: 22px;
 
-  @include breakpoints.tab-s { padding: 36px; }
+  @include breakpoints.tab-s {
+    padding: 36px;
+  }
 }
 
 .about__off-screen-watermark {
   position: absolute;
   top: 16px;
   right: 20px;
-  opacity: 0.25;
+  opacity: 0.15;
   pointer-events: none;
+  // Size (64 mobile / 96 desktop) is supplied by `viewport.pb768()` on
+  // the `<hrb-logo [size]>` binding — Direction C spec.
 }
 
 .about__off-screen-quote {

@@ -29,7 +29,13 @@
   <div class="home__work">
     <div class="home__work-head">
       <h2>Recent <em>work</em></h2>
-      <span class="eyebrow">{{ featuredCount }} of {{ totalCount }} ↗</span>
+      <a
+        class="eyebrow home__work-all"
+        routerLink="/projects"
+        [title]="'See all ' + totalCount + ' projects'"
+      >
+        {{ featuredCount }} of {{ totalCount }} <span aria-hidden="true">↗</span>
+      </a>
     </div>
     <ul class="home__work-grid" role="list">
       @for (project of featured; track project.slug) {

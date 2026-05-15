@@ -1,4 +1,4 @@
-@use "../styles/mixins" as mixins;
+@use '../styles/mixins' as mixins;
 
 :host {
   display: contents;
@@ -9,6 +9,25 @@
   display: block;
   min-height: 0;
   padding-top: var(--hrb-header-height);
+}
+
+// Direction C page-level sailboat watermark — matches the Frame
+// component in editorial.jsx: a single 420px boat, anchored at the
+// bottom-right corner of the document with -60/-60 bleed. The size
+// stays constant across viewports by design: on mobile (360px wide)
+// the boat spans the full viewport as an oversize background mark; on
+// desktop it occupies only the right portion as a corner accent.
+// Opacity is baked into the PNG (12% ink / 18% cream) so no CSS
+// opacity is applied here.
+.page-watermark {
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  width: 350px;
+  pointer-events: none;
+  user-select: none;
+  overflow-y: hidden;
+  opacity: 0.5;
 }
 
 .skip-link {

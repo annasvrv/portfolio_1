@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 
 import { LogoComponent } from "../../shared/logo/logo";
+import { ViewportService } from "../../core/viewport/viewport.service";
 
 interface Value {
   readonly title: string;
@@ -16,6 +17,8 @@ interface Value {
   styleUrl: "./about.scss",
 })
 export class AboutPage {
+  protected readonly viewport = inject(ViewportService);
+
   protected readonly values: readonly Value[] = [
     { title: "Honesty.",  body: "In code, in feedback, in scope." },
     { title: "Calm.",     body: "Considered motion, breathable spacing, kind defaults." },

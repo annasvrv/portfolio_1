@@ -44,6 +44,13 @@ html[data-theme="dark"] {
 body {
   display: flex;
   flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  // Opens a stacking context so the page-level sailboat watermark can
+  // sit at `z-index: -1` (behind everything in body) without slipping
+  // behind the html background.
+  isolation: isolate;
+  overflow-x: clip;
 }
 
 h1,
