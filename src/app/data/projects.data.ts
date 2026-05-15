@@ -23,7 +23,8 @@ export const projects: readonly Project[] = [
   {
     slug: 'binabox_as',
     title: 'Binabox Website',
-    description: '',
+    description:
+      'Multi-page landing for an NFT marketplace concept — roadmap, team, FAQ. Semantic HTML, custom CSS.',
     stack: ['HTML', 'CSS'],
     tag: 'Website',
     year: '2024',
@@ -38,7 +39,8 @@ export const projects: readonly Project[] = [
   {
     slug: 'PixMart_as',
     title: 'Pixmart Website',
-    description: '',
+    description:
+      'Landing for a digital-asset marketplace — category grids, pricing tiers, testimonials. Semantic HTML, hand-written CSS.',
     stack: ['HTML', 'CSS'],
     tag: 'Website',
     year: '2024',
@@ -127,14 +129,12 @@ export const projects: readonly Project[] = [
   },
 ];
 
-// Slugs featured on the home page (4 cards, 2-col grid).
-export const featuredProjectSlugs: readonly string[] = [
-  'constellation-landing',
-  'react-weather-app',
-  'vanilla-weather-app',
-  'dictionary-app',
-];
+// Home page shows the first N projects in the same order as the
+// /projects grid, so the "Recent work" preview stays in sync with the
+// top of the full list.
+export const FEATURED_PROJECT_COUNT = 4;
 
-export const featuredProjects: readonly Project[] = featuredProjectSlugs
-  .map((slug) => projects.find((p) => p.slug === slug))
-  .filter((p): p is Project => p !== undefined);
+export const featuredProjects: readonly Project[] = projects.slice(
+  0,
+  FEATURED_PROJECT_COUNT,
+);

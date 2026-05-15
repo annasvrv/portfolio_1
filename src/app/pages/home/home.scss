@@ -13,6 +13,7 @@
 }
 
 .home__hero {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -50,7 +51,6 @@
 }
 
 .home__hero-portrait {
-  position: relative;
   align-self: center;
   justify-self: center;
   width: 100%;
@@ -74,8 +74,8 @@
   @include breakpoints.tab-s {
     display: inline-flex;
     position: absolute;
-    top: -8px;
-    right: -80px;
+    top: 12px;
+    right: -45px;
     transform: rotate(6deg);
     align-items: center;
     gap: 10px;
