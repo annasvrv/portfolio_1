@@ -62,10 +62,15 @@
     img {
       aspect-ratio: 4 / 5;
       width: 100%;
-      border-radius: 45%;
+      border-radius: 16px;
       object-fit: cover;
       border: 1px solid var(--hrb-color-border-subtle);
       display: block;
+
+      @include breakpoints.tab-s {
+        border-radius: 80px;
+        corner-shape: superellipse(0.5);
+      }
     }
   }
 

@@ -39,7 +39,7 @@
   }
 
   &__portrait {
-    margin: 0;
+    margin: 0 auto;
     max-width: 240px;
     border-radius: 16px;
     overflow: hidden;
@@ -47,6 +47,7 @@
 
     @include breakpoints.tab-s {
       max-width: 360px;
+      margin: 0;
     }
 
     img {
