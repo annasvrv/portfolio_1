@@ -34,12 +34,9 @@
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
+            "outputMode": "static",
             "security": {
               "allowedHosts": [".local", "localhost", "192.168.0.5"]
-            },
-            "ssr": {
-              "entry": "src/server.ts"
             }
           },
           "configurations": {

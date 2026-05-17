@@ -1,0 +1,19 @@
+# Netlify build configuration for the Angular 21 portfolio.
+# `npm run build` produces a fully prerendered static site
+# (outputMode: "static" in angular.json) — Netlify just publishes the
+# browser bundle. No serverless functions involved.
+
+[build]
+  command = "npm run build"
+  publish = "dist/portfolio/browser"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA fallback: any URL that wasn't prerendered to an HTML file (e.g.
+# someone deep-links to a future route, or a typo) hands the request
+# to /index.html so the Angular router can handle it client-side.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
