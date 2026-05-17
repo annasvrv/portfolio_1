@@ -1,0 +1,36 @@
+<section class="projects">
+  <header class="projects__head">
+    <p class="eyebrow">Projects · 2022 — 26</p>
+    <h1 class="projects__title">Things I&rsquo;ve <em>made</em>.</h1>
+    <hrb-wave-underline width="280" />
+  </header>
+
+  <ul class="projects__list" role="list">
+    @for (project of rows(); track project.slug) {
+      <li class="projects__row" [class.projects__row--reverse]="project.imageReverse">
+        <div class="projects__frame">
+          @if (project.image.src) {
+            <img [src]="project.image.src" [alt]="project.image.alt" loading="lazy" />
+          } @else {
+            <span class="projects__frame-placeholder eyebrow">Image coming soon</span>
+          }
+        </div>
+        <div class="projects__copy">
+          <span class="projects__index">— {{ project.index }}</span>
+          <h3 class="projects__name">{{ project.title }}</h3>
+          <p class="projects__desc">{{ project.description }}</p>
+          <div class="projects__links">
+            <a class="projects__link projects__link--demo" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer">
+              Live demo ↗
+            </a>
+            @if (project.sourceUrl) {
+              <a class="projects__link projects__link--source" [href]="project.sourceUrl" target="_blank" rel="noopener noreferrer">
+                Source →
+              </a>
+            }
+          </div>
+        </div>
+      </li>
+    }
+  </ul>
+</section>

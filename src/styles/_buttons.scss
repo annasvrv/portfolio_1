@@ -1,0 +1,90 @@
+@use "mixins" as mixins;
+
+// Branded button utilities — Direction C.
+//   .btn                — base reset (display, sizing, focus)
+//   .btn--primary       — solid Sea pill (primary CTA)
+//   .btn--secondary     — Ink outline pill
+//   .btn--ghost         — underlined inline link, no chrome
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-family: var(--hrb-font-family-body);
+  font-size: var(--hrb-font-size-body-small);
+  font-weight: var(--hrb-font-weight-medium);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    border-color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    box-shadow var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease);
+
+  &:focus-visible {
+    @include mixins.focus-ring;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  &--primary {
+    background: var(--hrb-color-accent-primary);
+    color: var(--hrb-color-text-inverse);
+    border-color: var(--hrb-color-accent-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--hrb-color-accent-primary-hover);
+      border-color: var(--hrb-color-accent-primary-hover);
+      color: var(--hrb-color-text-inverse);
+      box-shadow: 0 6px 14px rgb(79 115 115 / 0.25);
+    }
+
+    &:active:not(:disabled) {
+      background: var(--hrb-color-accent-primary-pressed);
+      border-color: var(--hrb-color-accent-primary-pressed);
+      box-shadow: none;
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: var(--hrb-color-text-body);
+    border-color: var(--hrb-color-text-body);
+
+    &:hover:not(:disabled) {
+      background: var(--hrb-color-text-body);
+      color: var(--hrb-color-background-page);
+    }
+
+    &:active:not(:disabled) {
+      background: #000;
+      color: var(--hrb-color-background-page);
+      border-color: #000;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--hrb-color-text-body);
+    border-color: transparent;
+    padding: 12px 0;
+    border-radius: 0;
+
+    &:hover:not(:disabled) {
+      color: var(--hrb-color-accent-primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--hrb-color-accent-primary);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <hrb-logo [size]="64" />
+        <p class="footer__tagline">
+          from the Black Sea<br />to the Mediterranean.
+        </p>
+      </div>
+
+      <div class="footer__contact">
+        <a class="footer__email" [href]="'mailto:' + email">{{ email }}</a>
+        <p class="footer__location">Larnaca, Cyprus</p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© Anna S · {{ currentYear }}</span>
+      <span>Made with attention</span>
+    </div>
+  </div>
+</footer>

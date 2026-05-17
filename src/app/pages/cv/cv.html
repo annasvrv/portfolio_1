@@ -1,0 +1,80 @@
+<article class="cv">
+  <header class="cv__head">
+    <div class="cv__head-left">
+      <h1 class="cv__name">{{ profile.fullName }}</h1>
+      <p class="cv__role">{{ profile.title }}</p>
+    </div>
+    <div class="cv__head-right">
+      <a class="btn btn--primary cv__download" [href]="profile.pdfHref" target="_blank" rel="noopener noreferrer">
+        Download CV (PDF)
+      </a>
+      <p class="cv__contact">
+        {{ profile.location }}<br />
+        <a [href]="'mailto:' + profile.email">{{ profile.email }}</a><br />
+        @for (link of profile.links; track link.label) {
+          <a [href]="link.href" target="_blank" rel="noopener noreferrer">{{ link.label }}</a><br />
+        }
+      </p>
+    </div>
+  </header>
+
+  <section class="cv__skills" aria-label="Skills">
+    <ul role="list">
+      @for (skill of skills; track skill.label) {
+        <li
+          class="cv__tag"
+          [class.cv__tag--core]="skill.variant === 'core'"
+        >{{ skill.label }}</li>
+      }
+    </ul>
+  </section>
+
+  <section class="cv__section cv__profile">
+    <p>{{ profile.summary }}</p>
+  </section>
+
+  <section class="cv__section">
+    <h2 class="cv__section-title eyebrow">Experience</h2>
+    @for (entry of experience; track entry.title) {
+      <div class="cv__entry">
+        <div class="cv__entry-head">
+          <span class="cv__entry-title">{{ entry.title }}</span>
+          <span class="cv__entry-date">{{ entry.period }}</span>
+        </div>
+        <p class="cv__entry-company">{{ entry.company }}</p>
+        @if (entry.progression) {
+          <p class="cv__entry-progression">{{ entry.progression }}</p>
+        }
+        <ul class="cv__entry-bullets">
+          @for (line of entry.bullets; track line) {
+            <li>{{ line }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </section>
+
+  <section class="cv__section">
+    <h2 class="cv__section-title eyebrow">Education &amp; Training</h2>
+    <div class="cv__edu-grid">
+      @for (item of education; track item.name) {
+        <div class="cv__edu-item">
+          <p class="cv__edu-name">{{ item.name }}</p>
+          <p class="cv__edu-school">{{ item.school }}</p>
+          <p class="cv__edu-detail">{{ item.detail }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <footer class="cv__footer">
+    <div class="cv__footer-col">
+      <h3 class="eyebrow">Languages</h3>
+      <p>{{ languages }}</p>
+    </div>
+    <div class="cv__footer-col">
+      <h3 class="eyebrow">Interests</h3>
+      <p>{{ interests }}</p>
+    </div>
+  </footer>
+</article>

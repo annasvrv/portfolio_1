@@ -1,0 +1,109 @@
+// Global stylesheet entry. Order matters:
+// 1. Tokens (custom properties) so the reset and base rules can reference them.
+// 2. Reset to normalize browser defaults.
+// 3. Base element styles that apply across the app.
+// Component-scoped rules live in each component's own .scss.
+
+@use "styles/palette";
+@use "styles/typography";
+@use "styles/breakpoints" as breakpoints;
+@use "styles/mixins" as mixins;
+@use "styles/reset";
+@use "styles/buttons";
+@use "styles/animations";
+@use "styles/utility";
+
+// Layout tokens — must be declared in a global stylesheet, not in a
+// component .scss, because Angular's emulated view encapsulation
+// scopes `:root { ... }` with an `_ngcontent` attribute selector and
+// the rule then never matches the real `<html>` element.
+:root {
+  --hrb-header-height: 80px;
+
+  @include breakpoints.tab-s  { --hrb-header-height: 96px; }
+  @include breakpoints.desk-s { --hrb-header-height: 112px; }
+}
+
+html {
+  background: var(--hrb-color-background-page);
+  color: var(--hrb-color-text-body);
+  font-family: var(--hrb-font-family-body);
+  font-size: var(--hrb-font-size-body);
+  font-weight: var(--hrb-font-weight-regular);
+  line-height: var(--hrb-line-height-body);
+  color-scheme: light;
+  transition:
+    background-color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
+    color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  // Opens a stacking context so the page-level sailboat watermark can
+  // sit at `z-index: -1` (behind everything in body) without slipping
+  // behind the html background.
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--hrb-font-family-display);
+  font-weight: var(--hrb-font-weight-regular);
+  line-height: var(--hrb-line-height-heading);
+  letter-spacing: var(--hrb-letter-spacing-heading);
+  color: var(--hrb-color-text-heading);
+}
+
+h1, h2 { line-height: var(--hrb-line-height-display); }
+
+em {
+  font-style: italic;
+  color: var(--hrb-color-accent-primary);
+}
+
+h1 { font-size: var(--hrb-font-size-heading-1); }
+h2 { font-size: var(--hrb-font-size-heading-2); }
+h3 { font-size: var(--hrb-font-size-heading-3); }
+h4 { font-size: var(--hrb-font-size-heading-4); }
+
+a {
+  color: var(--hrb-color-accent-primary);
+  transition: color 150ms ease;
+
+  &:hover {
+    color: var(--hrb-color-accent-primary-hover);
+  }
+
+  &:focus-visible {
+    @include mixins.focus-ring;
+  }
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--hrb-font-family-body);
+  font-size: var(--hrb-font-size-eyebrow);
+  font-weight: var(--hrb-font-weight-semibold);
+  letter-spacing: var(--hrb-letter-spacing-eyebrow);
+  text-transform: uppercase;
+  color: var(--hrb-color-accent-primary);
+}
+
+.eyebrow--muted { color: var(--hrb-color-text-muted); }
+
+::selection {
+  background: var(--hrb-color-accent-primary);
+  color: var(--hrb-color-text-inverse);
+}

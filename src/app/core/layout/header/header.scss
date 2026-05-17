@@ -1,0 +1,261 @@
+@use "../../../../styles/breakpoints" as breakpoints;
+@use "../../../../styles/mixins" as mixins;
+
+// `--hrb-header-height` is declared globally in src/styles.scss (component
+// styles cannot set it because Angular scopes `:root` per-component).
+$sidebar-max-width: 412px;
+
+// IMPORTANT: do NOT put `backdrop-filter`, `filter`, `transform`, or
+// `perspective` anywhere on the header or its descendants — they would
+// trap the mobile sidebar's `position: fixed` inside this element.
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 50;
+  background: var(--hrb-color-background-page);
+  border-bottom: 1px solid var(--hrb-color-border-subtle);
+}
+
+.header {
+  &__bar {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 1280px;
+    padding-inline: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: var(--hrb-header-height);
+
+    @include breakpoints.tab-s  { padding-inline: 48px; }
+    @include breakpoints.desk-s { padding-inline: 64px; }
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--hrb-color-text-heading);
+    text-decoration: none;
+
+    &:focus-visible { @include mixins.focus-ring; }
+
+    @include breakpoints.tab-s {
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    // Direction C: smaller sailboat on mobile, full-size from tab-s up.
+    hrb-logo img {
+      width: 28px;
+      height: 28px;
+
+      @include breakpoints.tab-s {
+        width: 42px;
+        height: 42px;
+      }
+    }
+  }
+
+  &__brand-text {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  &__brand-name {
+    font-family: var(--hrb-font-family-display);
+    font-style: italic;
+    font-weight: var(--hrb-font-weight-regular);
+    font-size: 22px;
+    letter-spacing: var(--hrb-letter-spacing-brand);
+
+    @include breakpoints.tab-s { font-size: 28px; }
+  }
+
+  &__brand-dot {
+    color: var(--hrb-color-accent-primary);
+  }
+
+  &__brand-meta {
+    display: none;
+    margin-top: 4px;
+    font-size: var(--hrb-font-size-eyebrow);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--hrb-color-text-muted);
+
+    @include breakpoints.tab-s { display: inline; }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: transparent;
+    border: 0;
+    color: var(--hrb-color-text-muted);
+    font-family: var(--hrb-font-family-body);
+    font-size: var(--hrb-font-size-eyebrow);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover { color: var(--hrb-color-text-body); }
+    &:focus-visible { @include mixins.focus-ring; }
+  }
+
+  &__theme-label {
+    display: none;
+
+    @include breakpoints.tab-s { display: inline; }
+  }
+
+  &__cta {
+    display: none;
+
+    @include breakpoints.tab-s { 
+      display: inline-flex; 
+      flex-shrink: 0;
+      text-wrap: nowrap;
+    }
+  }
+
+  // Direction C mobile nav opener — eyebrow-style text ("Menu" / "Close")
+  // instead of a hamburger icon. Hidden on tab-s+ where the full nav
+  // appears inline.
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 4px;
+    color: var(--hrb-color-text-muted);
+    background: transparent;
+    border: 0;
+    font-family: var(--hrb-font-family-body);
+    font-size: var(--hrb-font-size-eyebrow);
+    font-weight: var(--hrb-font-weight-medium);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color var(--hrb-motion-duration) var(--hrb-motion-ease);
+
+    &:hover { color: var(--hrb-color-text-heading); }
+    &:focus-visible { @include mixins.focus-ring; }
+
+    @include breakpoints.tab-s { display: none; }
+  }
+
+  &__backdrop {
+    position: fixed;
+    inset: var(--hrb-header-height) 0 0 0;
+    background: rgb(0 0 0 / 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--hrb-motion-duration) var(--hrb-motion-ease),
+      visibility var(--hrb-motion-duration) var(--hrb-motion-ease);
+    z-index: 40;
+
+    .header--menu-open & {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @include breakpoints.tab-s { display: none; }
+  }
+
+  &__sidebar {
+    position: fixed;
+    top: var(--hrb-header-height);
+    right: 0;
+    width: 100%;
+    max-width: $sidebar-max-width;
+    height: calc(100dvh - var(--hrb-header-height));
+    background: var(--hrb-color-background-page);
+    border-left: 1px solid var(--hrb-color-border-subtle);
+    box-shadow: -4px 0 24px rgb(0 0 0 / 0.08);
+    padding: 24px 22px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 250ms var(--hrb-motion-ease);
+    z-index: 45;
+
+    .header--menu-open & { transform: translateX(0); }
+
+    @include breakpoints.tab-s {
+      position: static;
+      width: auto;
+      max-width: none;
+      height: auto;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      overflow: visible;
+      transform: none;
+      transition: none;
+      margin-inline: auto;
+    }
+  }
+
+  &__nav { width: 100%; }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoints.tab-s {
+      flex-direction: row;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include breakpoints.desk-s {
+      gap: 36px;
+    }
+  }
+
+  &__menu-item { display: block; }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 0;
+    color: var(--hrb-color-text-muted);
+    font-size: 14px;
+    font-weight: var(--hrb-font-weight-medium);
+    text-decoration: none;
+    transition: color var(--hrb-motion-duration) var(--hrb-motion-ease);
+
+    &:hover { color: var(--hrb-color-accent-primary); }
+    &:focus-visible { @include mixins.focus-ring; }
+
+    &--active { color: var(--hrb-color-text-body); }
+  }
+
+  &__link-underline {
+    position: absolute;
+    left: -6px;
+    right: -6px;
+    bottom: -2px;
+    pointer-events: none;
+    line-height: 0;
+  }
+}

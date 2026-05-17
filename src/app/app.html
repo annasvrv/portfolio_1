@@ -1,0 +1,22 @@
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<hrb-header />
+
+<main id="main" class="main">
+  <router-outlet />
+</main>
+
+<hrb-footer />
+
+<!--
+  Page-level sailboat watermark per Direction C. Source swaps with the
+  theme via the `watermarkSrc` signal on App (sailboat-ink-12.png for
+  light, sailboat-cream-18.png for dark). The PNGs are pre-rendered with
+  the design's baked opacities; we just position and theme-swap them.
+-->
+<img
+  class="page-watermark"
+  [src]="watermarkSrc()"
+  alt=""
+  aria-hidden="true"
+/>
