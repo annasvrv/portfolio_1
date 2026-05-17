@@ -28,15 +28,10 @@
     background-color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
     color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
     border-color var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
-    box-shadow var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease),
-    transform var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease);
+    box-shadow var(--hrb-motion-duration, 200ms) var(--hrb-motion-ease, ease);
 
   &:focus-visible {
     @include mixins.focus-ring;
-  }
-
-  &:active:not(:disabled) {
-    transform: translateY(0);
   }
 
   &:disabled,
@@ -55,14 +50,12 @@
       background: var(--hrb-color-accent-primary-hover);
       border-color: var(--hrb-color-accent-primary-hover);
       color: var(--hrb-color-text-inverse);
-      transform: translateY(-1px);
       box-shadow: 0 6px 14px rgb(79 115 115 / 0.25);
     }
 
     &:active:not(:disabled) {
       background: var(--hrb-color-accent-primary-pressed);
       border-color: var(--hrb-color-accent-primary-pressed);
-      transform: translateY(0);
       box-shadow: none;
     }
   }

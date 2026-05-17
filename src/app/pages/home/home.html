@@ -1,13 +1,15 @@
 <section class="home">
   <div class="home__hero">
     <div class="home__hero-copy">
-      <p class="eyebrow">Front-end developer</p>
+      <p class="eyebrow">Frontend developer</p>
       <h1 class="home__hero-title">
-        Hello — I&rsquo;m <em>Anna</em>. I build calm, careful interfaces from a quiet stretch of coastline.
+        Hello — I&rsquo;m <em>Anna</em>. Frontend developer based in Cyprus.
       </h1>
       <hrb-wave-underline width="320" />
       <p class="home__hero-body">
-        Ukrainian by origin, Cypriot by sea. I work as a front-end developer at BrainRocket and care most about typography, accessibility, and the slow craft of getting a thing right.
+        Building accessible, production-ready interfaces across 10+ live products. Working in HTML,
+        SCSS, and modern CSS, with growing experience in React and TypeScript. Ukrainian by origin,
+        Cypriot by sea.
       </p>
       <div class="home__hero-cta">
         <a class="btn btn--primary" routerLink="/projects">See my work →</a>
@@ -16,23 +18,34 @@
     </div>
 
     <div class="home__hero-portrait">
-      <img src="/images/photo_4.jpg" alt="Portrait of Anna" />
-      <div class="home__hero-sticker" aria-hidden="true">
-        <hrb-logo [size]="26" />
-        <span>open for work</span>
-      </div>
+      <img src="/images/my_photo-sail.jpg" alt="Portrait of Anna" />
+    </div>
+    <div class="home__hero-sticker" aria-hidden="true">
+      <hrb-logo [size]="26" />
+      <span>open for work</span>
     </div>
   </div>
 
   <div class="home__work">
     <div class="home__work-head">
       <h2>Recent <em>work</em></h2>
-      <span class="eyebrow">{{ featuredCount }} of {{ totalCount }} ↗</span>
+      <a
+        class="eyebrow home__work-all"
+        routerLink="/projects"
+        [title]="'See all ' + totalCount + ' projects'"
+      >
+        {{ featuredCount }} of {{ totalCount }} <span aria-hidden="true">↗</span>
+      </a>
     </div>
     <ul class="home__work-grid" role="list">
       @for (project of featured; track project.slug) {
         <li class="home__work-card">
-          <a [href]="project.demoUrl" target="_blank" rel="noopener noreferrer" class="home__work-link">
+          <a
+            [href]="project.demoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="home__work-link"
+          >
             <div class="home__work-frame">
               <img [src]="project.image.src" [alt]="project.image.alt" loading="lazy" />
             </div>

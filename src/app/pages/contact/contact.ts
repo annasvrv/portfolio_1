@@ -23,7 +23,6 @@ export class ContactPage {
   protected readonly elsewhere: readonly ContactRow[] = [
     { key: "LinkedIn", value: "/in/anna-svrv", href: "https://www.linkedin.com/in/anna-svrv/", external: true },
     { key: "GitHub",   value: "@annasvrv",     href: "https://github.com/annasvrv",            external: true },
-    { key: "Telegram", value: "@anna_svrv",    href: "https://t.me/anna_svrv",                 external: true },
     { key: "CV (PDF)", value: "Download →",    href: "/anna-suvorova-cv.pdf" },
   ];
 }

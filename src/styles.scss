@@ -11,6 +11,18 @@
 @use "styles/reset";
 @use "styles/buttons";
 @use "styles/animations";
+@use "styles/utility";
+
+// Layout tokens — must be declared in a global stylesheet, not in a
+// component .scss, because Angular's emulated view encapsulation
+// scopes `:root { ... }` with an `_ngcontent` attribute selector and
+// the rule then never matches the real `<html>` element.
+:root {
+  --hrb-header-height: 80px;
+
+  @include breakpoints.tab-s  { --hrb-header-height: 96px; }
+  @include breakpoints.desk-s { --hrb-header-height: 112px; }
+}
 
 html {
   background: var(--hrb-color-background-page);
@@ -32,6 +44,13 @@ html[data-theme="dark"] {
 body {
   display: flex;
   flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  // Opens a stacking context so the page-level sailboat watermark can
+  // sit at `z-index: -1` (behind everything in body) without slipping
+  // behind the html background.
+  isolation: isolate;
+  overflow-x: clip;
 }
 
 h1,
