@@ -1,12 +1,10 @@
 <section class="contact">
   <header class="contact__head">
     <p class="eyebrow">Contact</p>
-    <h1 class="contact__title">
-      A short message often goes a <em>long way</em>.
-    </h1>
+    <h1 class="contact__title">Every message is a <em>crossing</em>.</h1>
     <hrb-wave-underline width="360" />
     <p class="contact__intro">
-      Best for project briefs, freelance, and full-time roles in design-led teams. I read everything; replies usually land within a day.
+      Write to me — I read everything. Frontend roles, freelance work, or just hello.
     </p>
   </header>
 
@@ -28,7 +26,8 @@
               [href]="row.href"
               [attr.target]="row.external ? '_blank' : null"
               [attr.rel]="row.external ? 'noopener noreferrer' : null"
-            >{{ row.value }}</a>
+              >{{ row.value }}</a
+            >
           </li>
         }
       </ul>
