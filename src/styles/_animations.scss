@@ -1,0 +1,48 @@
+// Motion tokens — kept short and honest per the Direction C spec.
+:root {
+  --hrb-motion-duration: 200ms;
+  --hrb-motion-ease:     ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --hrb-motion-duration: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Scroll-driven reveal animations using `animation-timeline: view()`.
+// Progressive enhancement — only browsers that support it AND users
+// who haven't requested reduced motion get the effect. Everyone else
+// sees the final (revealed) state immediately.
+
+@keyframes hrb-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: hrb-reveal-up linear both;
+      animation-timeline: view();
+      // Start fully transparent, finish revealed when the element is
+      // ~30% above the bottom of the viewport.
+      animation-range: entry 0% cover 30%;
+    }
+  }
+}

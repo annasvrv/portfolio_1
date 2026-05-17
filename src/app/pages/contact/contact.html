@@ -1,0 +1,36 @@
+<section class="contact">
+  <header class="contact__head">
+    <p class="eyebrow">Contact</p>
+    <h1 class="contact__title">Every message is a <em>crossing</em>.</h1>
+    <hrb-wave-underline width="360" />
+    <p class="contact__intro">
+      Write to me — I read everything. Frontend roles, freelance work, or just hello.
+    </p>
+  </header>
+
+  <div class="contact__cards">
+    <article class="contact__card contact__card--email">
+      <p class="eyebrow eyebrow--muted">Email</p>
+      <a class="contact__email" [href]="'mailto:' + email">{{ email }}</a>
+      <p class="contact__note">Replies within 24h · weekdays.</p>
+    </article>
+
+    <article class="contact__card contact__card--elsewhere">
+      <p class="eyebrow eyebrow--muted">Elsewhere</p>
+      <ul class="contact__rows" role="list">
+        @for (row of elsewhere; track row.key) {
+          <li class="contact__row">
+            <span class="contact__row-key">{{ row.key }}</span>
+            <a
+              class="contact__row-value"
+              [href]="row.href"
+              [attr.target]="row.external ? '_blank' : null"
+              [attr.rel]="row.external ? 'noopener noreferrer' : null"
+              >{{ row.value }}</a
+            >
+          </li>
+        }
+      </ul>
+    </article>
+  </div>
+</section>

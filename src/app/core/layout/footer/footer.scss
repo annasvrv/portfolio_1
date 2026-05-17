@@ -1,0 +1,95 @@
+@use "../../../../styles/breakpoints" as breakpoints;
+@use "../../../../styles/mixins" as mixins;
+
+:host {
+  display: block;
+  background: var(--hrb-color-background-page);
+  border-top: 1px solid var(--hrb-color-border-subtle);
+  margin-top: 64px;
+}
+
+.footer {
+  &__inner {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 1280px;
+    padding: 32px 22px 24px;
+
+    @include breakpoints.tab-s { padding: 56px 64px 32px; }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include breakpoints.tab-s {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__tagline {
+    margin: 0;
+    font-family: var(--hrb-font-family-display);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--hrb-color-text-body);
+
+    @include breakpoints.tab-s { font-size: 28px; }
+  }
+
+  &__contact {
+    text-align: left;
+
+    @include breakpoints.tab-s { text-align: right; }
+  }
+
+  &__email {
+    font-size: 14px;
+    color: var(--hrb-color-text-body);
+    text-decoration: none;
+    border-bottom: 1px solid var(--hrb-color-border-subtle);
+    padding-bottom: 1px;
+
+    &:hover {
+      color: var(--hrb-color-accent-primary);
+      border-color: var(--hrb-color-accent-primary);
+    }
+
+    &:focus-visible { @include mixins.focus-ring; }
+  }
+
+  &__location {
+    margin: 4px 0 0;
+    font-size: var(--hrb-font-size-eyebrow);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--hrb-color-text-muted);
+  }
+
+  &__bottom {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hrb-color-border-subtle);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: var(--hrb-font-size-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--hrb-color-text-muted);
+
+    @include breakpoints.tab-s { margin-top: 36px; }
+  }
+}

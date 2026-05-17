@@ -1,0 +1,80 @@
+<header class="header" [class.header--menu-open]="isOpen()">
+  <div class="header__bar">
+    <a class="header__brand" routerLink="/" title="Homepage" (click)="close()">
+      <hrb-logo [size]="42" />
+      <span class="header__brand-text">
+        <span class="header__brand-name">
+          anna<span class="header__brand-dot">.</span>s
+        </span>
+        <span class="header__brand-meta">front-end · 🇺🇦 → 🇨🇾</span>
+      </span>
+    </a>
+
+    <aside
+      id="primary-menu"
+      class="header__sidebar"
+      [attr.aria-hidden]="!isOpen()"
+      #sidebar
+    >
+      <nav class="header__nav" aria-label="Primary">
+        <ul class="header__menu" role="list">
+          @for (item of navItems; track item.path) {
+            <li class="header__menu-item">
+              <a
+                #navLink="routerLinkActive"
+                class="header__link"
+                [class.header__link--active]="navLink.isActive"
+                [routerLink]="item.path"
+                routerLinkActive
+                [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+                [title]="item.title"
+              >
+                <span class="header__link-label">{{ item.label }}</span>
+                @if (navLink.isActive) {
+                  <span class="header__link-underline" aria-hidden="true">
+                    <hrb-wave-underline width="100%" />
+                  </span>
+                }
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="header__actions">
+      <button
+        type="button"
+        class="header__theme"
+        [attr.aria-label]="theme.mode() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+        (click)="toggleTheme()"
+      >
+        @if (theme.mode() === 'dark') {
+          <span aria-hidden="true">🌙</span>
+          <span class="header__theme-label">Dusk</span>
+        } @else {
+          <span class="text-16" aria-hidden="true">☀</span>
+          <span class="header__theme-label">Day</span>
+        }
+      </button>
+
+      <a class="btn btn--primary header__cta" routerLink="/contact" (click)="close()">
+        Say hello
+      </a>
+
+      <button
+        type="button"
+        class="header__toggle"
+        [attr.aria-expanded]="isOpen()"
+        aria-controls="primary-menu"
+        [attr.aria-label]="isOpen() ? 'Close navigation menu' : 'Open navigation menu'"
+        (click)="toggle()"
+        #toggleButton
+      >
+        {{ isOpen() ? 'Close' : 'Menu' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="header__backdrop" aria-hidden="true" (click)="close()"></div>
+</header>

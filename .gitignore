@@ -1,2 +1,59 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
 .DS_Store
+Thumbs.db
+
+# Generated sprite (rebuilt by prebuild/prestart hooks)
+/public/sprite.svg
+
+# Generated favicon set + PWA manifest (rebuilt by prebuild/prestart hooks).
+# Source of truth is src/brand/logo.svg.
+/public/logo.svg
+/public/logo.png
+/public/logo@2x.png
+/public/favicon.svg
+/public/favicon-96.png
+/public/apple-touch-icon.png
+/public/icon-192.png
+/public/icon-512.png
+/public/site.webmanifest

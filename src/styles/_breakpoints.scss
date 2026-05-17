@@ -1,0 +1,12 @@
+// Mobile-first breakpoints. Base styles target the smallest screen
+// (mob-s = 360px); use `@include breakpoints.tab-s { ... }` etc. to layer
+// up at larger widths via min-width media queries.
+
+$mob-s:  360px;   // base — no media query needed
+$tab-s:  768px;
+$desk-s: 1280px;
+$desk-l: 1920px;
+
+@mixin tab-s  { @media (min-width: $tab-s)  { @content; } }
+@mixin desk-s { @media (min-width: $desk-s) { @content; } }
+@mixin desk-l { @media (min-width: $desk-l) { @content; } }

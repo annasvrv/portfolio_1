@@ -1,0 +1,54 @@
+// Color tokens — Direction C (Personal & Poetic).
+// Light is the default; dark applies under [data-theme="dark"] on <html>.
+// Names follow --hrb-color-{role}-{variant} convention.
+
+:root {
+  // Surfaces
+  --hrb-color-background-page:        #f0ebdd; // Cream
+  --hrb-color-background-page-soft:   rgb(240 235 221 / 0.6);
+  --hrb-color-surface:                #f8f4e8; // Sand
+  --hrb-color-surface-deep:           #e2dcc8; // Stone
+  --hrb-color-background-elevated:    var(--hrb-color-surface);
+
+  // Text
+  --hrb-color-text-body:              #1f2a2e; // Ink
+  --hrb-color-text-heading:           #1f2a2e;
+  --hrb-color-text-muted:             rgb(31 42 46 / 0.55);
+  --hrb-color-text-inverse:           #f0ebdd;
+
+  // Brand / accent
+  --hrb-color-accent-primary:         #4f7373; // Sea
+  --hrb-color-accent-primary-hover:   #3d5c5c;
+  --hrb-color-accent-primary-pressed: #324d4d;
+  --hrb-color-accent-secondary:       #8fa89b; // Sage
+
+  // Borders & focus
+  --hrb-color-border-subtle:          rgb(31 42 46 / 0.14);
+  --hrb-color-focus-ring:             rgb(79 115 115 / 0.45);
+
+  // Status
+  --hrb-color-status-error:           #b05656;
+}
+
+[data-theme="dark"] {
+  --hrb-color-background-page:        #16211e; // Deep Pine
+  --hrb-color-background-page-soft:   rgb(22 33 30 / 0.6);
+  --hrb-color-surface:                #1b2724; // Pine
+  --hrb-color-surface-deep:           #22302d; // Spruce
+  --hrb-color-background-elevated:    var(--hrb-color-surface);
+
+  --hrb-color-text-body:              #f0ebdd; // Cream
+  --hrb-color-text-heading:           #f0ebdd;
+  --hrb-color-text-muted:             rgb(240 235 221 / 0.55);
+  --hrb-color-text-inverse:           #16211e;
+
+  --hrb-color-accent-primary:         #9cc0bd; // Sea Mist
+  --hrb-color-accent-primary-hover:   #b0cdca;
+  --hrb-color-accent-primary-pressed: #c4dad7;
+  --hrb-color-accent-secondary:       #b5c9bb; // Sage Mist
+
+  --hrb-color-border-subtle:          rgb(240 235 221 / 0.14);
+  --hrb-color-focus-ring:             rgb(156 192 189 / 0.45);
+
+  --hrb-color-status-error:           #d28080;
+}
