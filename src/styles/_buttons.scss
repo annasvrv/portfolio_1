@@ -5,9 +5,6 @@
 //   .btn--primary       — solid Sea pill (primary CTA)
 //   .btn--secondary     — Ink outline pill
 //   .btn--ghost         — underlined inline link, no chrome
-//
-// The legacy aliases (.btn--branding, .btn--branding-outline) map onto the
-// new variants so existing markup keeps working through the redesign.
 
 .btn {
   display: inline-flex;
@@ -40,8 +37,7 @@
     opacity: 0.55;
   }
 
-  &--primary,
-  &--branding {
+  &--primary {
     background: var(--hrb-color-accent-primary);
     color: var(--hrb-color-text-inverse);
     border-color: var(--hrb-color-accent-primary);
@@ -60,8 +56,7 @@
     }
   }
 
-  &--secondary,
-  &--branding-outline {
+  &--secondary {
     background: transparent;
     color: var(--hrb-color-text-body);
     border-color: var(--hrb-color-text-body);
